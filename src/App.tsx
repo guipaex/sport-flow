@@ -11,7 +11,7 @@ function App() {
       <AuthGoogleProvider>
         <Routes>
           <Route Component={Home} path='/' />
-          <Route Component={RaceRegister} path='/addrace' />
+          <Route Component={RaceRegister} path='/cadastro-corrida' />
           <Route Component={Login} path='/login' />
         </Routes>
       </AuthGoogleProvider>
