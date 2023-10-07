@@ -21,10 +21,19 @@ const RacesView = () => {
         {races === undefined
           ? ""
           : Object.values(races).map((race) => {
-              console.log(race[0]);
               return (
                 <div key={race.id} className={style.raceCard}>
-                  <h4>{race.name}</h4>
+                  <h4 className={style.raceCard__title}>{race.name}</h4>
+                  <div className={style.raceCard__infos}>
+                    {Object.values(race.distances).map((distance, index) => (
+                      <p className={style.raceCard__km} key={index}>
+                        {String(distance)}Km
+                      </p>
+                    ))}
+                  </div>
+                  <a className={style.linkBtn} href={race.link} target='_blank'>
+                    Saiba Mais
+                  </a>
                 </div>
               );
             })}
