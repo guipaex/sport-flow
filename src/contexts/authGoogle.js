@@ -1,5 +1,5 @@
 import {useState, useEffect, createContext} from 'react';
-import { getAuth, signInWithPopup, GoogleAuthProvider, setPersistence, browserSessionPersistence } from "firebase/auth";
+import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import { app } from "../services/firebase";
 
 const provider = new GoogleAuthProvider();
