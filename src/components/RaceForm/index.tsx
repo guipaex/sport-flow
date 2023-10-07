@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import style from "./styles.module.css";
 import { db } from "../../services/firebase";
 import { collection, addDoc } from "firebase/firestore";
 import { Race } from "../../utils/interfaces";
+import { AuthGoogleContext } from "../../contexts/authGoogle";
 
 function RaceForm() {
   const [status, setStatus] = useState<boolean>();
@@ -14,7 +15,7 @@ function RaceForm() {
 
   async function uploadRace(data: Race) {
     try {
-      const race = await addDoc(collection(db, "races"), {
+      addDoc(collection(db, "races"), {
         name: data.raceName,
         date: data.raceDate,
         distances: data.distances,
@@ -54,40 +55,56 @@ function RaceForm() {
     setLocal("");
     setEventLink("");
   }
-  return (
-    <form id='race-form' className={style.formulario} onSubmit={handleRace}>
-      <input
-        className={style.inputText}
-        type='text'
-        placeholder='Nome do Evento'
-        value={name}
-        onChange={(e) => setEventName(e.target.value)}
-      />
-      <input className={style.inputDate} type='date' value={date} onChange={(e) => setDate(e.target.value)} />
-      <input
-        className={style.inputText}
-        type='text'
-        placeholder='Ex.: 5km, 10km, 21km'
-        value={distances}
-        onChange={(e) => setDistances(e.target.value)}
-      />
-      <input
-        className={style.inputText}
-        type='text'
-        placeholder='Ex.: RJ'
-        value={local}
-        onChange={(e) => setLocal(e.target.value)}
-      />
-      <input
-        type='text'
-        className={style.inputText}
-        placeholder='Endereço de Inscrição'
-        value={eventlink}
-        onChange={(e) => setEventLink(e.target.value)}
-      />
-      <input className={style.submitBTN} type='submit' value={"Cadastrar Prova"} />
-    </form>
-  );
+
+  const { signed }: any = useContext(AuthGoogleContext);
+
+  if (!signed) {
+    console.log(signed);
+    return (
+      <>
+        <h2>Área restrita para usuários cadastrados</h2>;
+        <img
+          src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR4iZCrmSeGj-IfJXZbMdLXlvH4ES-rra4Q5g&usqp=CAU'
+          alt=''
+        />
+      </>
+    );
+  } else {
+    return (
+      <form id='race-form' className={style.formulario} onSubmit={handleRace}>
+        <input
+          className={style.inputText}
+          type='text'
+          placeholder='Nome do Evento'
+          value={name}
+          onChange={(e) => setEventName(e.target.value)}
+        />
+        <input className={style.inputDate} type='date' value={date} onChange={(e) => setDate(e.target.value)} />
+        <input
+          className={style.inputText}
+          type='text'
+          placeholder='Ex.: 5km, 10km, 21km'
+          value={distances}
+          onChange={(e) => setDistances(e.target.value)}
+        />
+        <input
+          className={style.inputText}
+          type='text'
+          placeholder='Ex.: RJ'
+          value={local}
+          onChange={(e) => setLocal(e.target.value)}
+        />
+        <input
+          type='text'
+          className={style.inputText}
+          placeholder='Endereço de Inscrição'
+          value={eventlink}
+          onChange={(e) => setEventLink(e.target.value)}
+        />
+        <input className={style.submitBTN} type='submit' value={"Cadastrar Prova"} />
+      </form>
+    );
+  }
 }
 
 export default RaceForm;

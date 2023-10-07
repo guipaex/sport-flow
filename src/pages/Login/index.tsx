@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import { AuthGoogleContext } from "../../contexts/authGoogle";
+import { User } from "firebase/auth";
 
 export default function Login() {
   const { signInGoogle, signed, user }: any = useContext(AuthGoogleContext);
@@ -11,7 +12,7 @@ export default function Login() {
   if (!signed) {
     return <button onClick={loginGoogle}>Entrar com Google</button>;
   } else {
-    let username = user.displayName;
-    return <h1>Olá, {username}!</h1>;
+    let account: User = user;
+    return <h1>Olá, {account.displayName}!</h1>;
   }
 }
