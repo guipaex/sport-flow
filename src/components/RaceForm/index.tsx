@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import style from "./styles.module.css";
-import { db } from "../../utils/firebase";
+import { db } from "../../services/firebase";
 import { collection, addDoc } from "firebase/firestore";
 
 interface RaceProps {
