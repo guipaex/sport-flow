@@ -5,6 +5,13 @@ import { collection, addDoc } from "firebase/firestore";
 import { Race } from "../../utils/interfaces";
 
 function RaceForm() {
+  const [status, setStatus] = useState<boolean>();
+  const [name, setEventName] = useState<string>("");
+  const [date, setDate] = useState<Date | any>("");
+  const [distances, setDistances] = useState<string>("");
+  const [local, setLocal] = useState<string>("");
+  const [eventlink, setEventLink] = useState<string>("");
+
   async function uploadRace(data: Race) {
     try {
       const race = await addDoc(collection(db, "races"), {
@@ -13,20 +20,18 @@ function RaceForm() {
         distances: data.distances,
         link: data.link,
       });
-      console.log("Document written with ID: ", race.id);
+      // console.log("Document written with ID: ", race.id);
+      setStatus(false);
+      if (!status) {
+        resetForm();
+      }
     } catch (e) {
       console.error("Error adding document: ", e);
     }
   }
-
-  const [name, setEventName] = useState<string>("");
-  const [date, setDate] = useState<Date | any>("");
-  const [distances, setDistances] = useState<string>("");
-  const [local, setLocal] = useState<string>("");
-  const [eventlink, setEventLink] = useState<string>("");
-
   function handleRace(e: React.FormEvent) {
     e.preventDefault();
+    setStatus(true);
     const raceData: Race = {
       raceName: name,
       raceDate: date,
@@ -34,7 +39,6 @@ function RaceForm() {
       local: local,
       link: eventlink,
     };
-
     uploadRace(raceData);
   }
 
@@ -42,8 +46,16 @@ function RaceForm() {
     let distances = data.split(",");
     return distances;
   }
+  function resetForm() {
+    setStatus(undefined);
+    setEventName("");
+    setDate("");
+    setDistances("");
+    setLocal("");
+    setEventLink("");
+  }
   return (
-    <form className={style.formulario} onSubmit={handleRace}>
+    <form id='race-form' className={style.formulario} onSubmit={handleRace}>
       <input
         className={style.inputText}
         type='text'
