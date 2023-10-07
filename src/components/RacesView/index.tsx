@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import style from "./styles.module.css";
-import { db } from "../../utils/firebase";
+import { db } from "../../services/firebase";
 import { collection, getDocs } from "firebase/firestore";
 
 const RacesView = () => {
