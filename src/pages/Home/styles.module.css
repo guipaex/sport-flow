@@ -35,3 +35,33 @@
 	object-fit:cover;
 	filter: drop-shadow(0 5px 5px rgba(0, 0, 0, .25)); 
 }
+nav{
+	display: flex;
+	gap: 1.5rem;
+	justify-content: center;
+	align-items: center;
+}
+.registerBtn{
+	width: fit-content;
+	height: fit-content;
+	line-height: normal;
+	padding: .5rem 1.2rem;
+	border: none;
+	border-radius: .3rem;
+	background-color: #192126;
+	color: #BBF246;
+	font-weight: 700;
+	font-size: .8rem;
+	text-transform: uppercase;
+}
+.registerBtn:hover{
+	transition:  200ms;
+	background-color: #23323b;
+}
+
+button{
+	border: none;
+	width: fit-content;
+	background:transparent;
+
+}

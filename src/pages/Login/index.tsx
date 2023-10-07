@@ -1,4 +1,4 @@
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import { AuthGoogleContext } from "../../contexts/authGoogle";
 import { User } from "firebase/auth";
 
