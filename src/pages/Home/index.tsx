@@ -27,7 +27,7 @@ export default function Home() {
         <h2>Logo</h2>
         {user ? (
           <nav>
-            <h4>Olá, {account.displayName}!</h4>
+            <h4 className={style.welcome}>Olá, {account.displayName}!</h4>
             <button>
               <Link className={style.registerBtn} to='/cadastro-corrida'>
                 Cadastrar Evento
