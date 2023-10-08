@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import style from "./styles.module.css";
 import { db } from "../../services/firebase";
 import { collection, getDocs } from "firebase/firestore";
+import RaceThumb from "../RaceThumb";
 
 const RacesView = () => {
   const [races, setRaces] = useState<Object>();
@@ -23,6 +24,7 @@ const RacesView = () => {
           : Object.values(races).map((race) => {
               return (
                 <div key={race.id} className={style.raceCard}>
+                  <RaceThumb raceID={race.id} />
                   <h4 className={style.raceCard__title}>{race.name}</h4>
                   <div className={style.raceCard__infos}>
                     {Object.values(race.distances).map((distance, index) => (
