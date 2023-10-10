@@ -25,7 +25,7 @@ export default function Header() {
       {user ? (
         <nav className={style.menu}>
           <div className={style.profile}>
-            <img src={account.photoURL} className={style.profile__pic} />
+            <img src={account.photoURL} className={style.profile__pic} alt={`${account.displayName}`} />
             <p className={style.profile__saudation}>Olá, {account.displayName}!</p>
           </div>
           <Link className={style.btn__addEvent} to='/cadastro-corrida'>

@@ -6,11 +6,11 @@
 .imgContainer {
 	padding: 2rem 0;
 }
-.img{
+.banner{
 	margin: 2rem auto;
 	display: flex;
 	width: 80%;
-	max-height: 360px;
+	height: 30rem;
 	border-radius: 1.5rem;
 	margin: auto;
 	object-fit:cover;

@@ -6,7 +6,7 @@ export default function Home() {
   return (
     <section className={style.container}>
       <div className={style.imgContainer}>
-        <img className={style.img} src={bannerImage} alt='night run' />
+        <img className={style.banner} src={bannerImage} alt='Pessoas correndo na Night Run 2022' />
       </div>
       <RacesView />
     </section>
