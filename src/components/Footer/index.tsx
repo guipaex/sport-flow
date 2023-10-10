@@ -1,8 +1,10 @@
+import "./footer.module.scss";
+
 export default function Footer() {
   return (
     <footer>
       <p>
-        Projeto desenvolvido por <a href='https://www.github.com/guipaex'>@guipaex</a>
+        © 2023 - SportSync || Tudo em um só lugar - Desenvolvido por<a href='https://guipaes.com'>Guilherme Paes</a>
       </p>
     </footer>
   );

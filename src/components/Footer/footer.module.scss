@@ -1,0 +1,28 @@
+footer {
+  background-color: #192126;
+  height: 1.5rem;
+  width: 75%;
+  max-width: 1440px;
+  margin: 0.5rem auto;
+  padding: 0.5rem 2rem;
+  border-radius: 0.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  text-decoration: none;
+
+  & p {
+    font-size: 0.75rem;
+    margin: none;
+  }
+  & a {
+    color: white;
+    border: none;
+    margin: none;
+    padding: none;
+    width: fit-content;
+    height: fit-content;
+    text-decoration: underline;
+  }
+}
