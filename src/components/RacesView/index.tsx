@@ -3,10 +3,10 @@ import style from "./styles.module.css";
 import { db } from "../../services/firebase";
 import { collection, getDocs } from "firebase/firestore";
 import RaceThumb from "../RaceThumb";
+import corridas from "../../utils/corridasRJ.json";
 
 const RacesView = () => {
   const [races, setRaces] = useState<Object>();
-
   const racesCollection = collection(db, "races");
   const getRaces = async () => {
     const data = await getDocs(racesCollection);
@@ -15,11 +15,26 @@ const RacesView = () => {
   useEffect(() => {
     getRaces();
   }, []);
+  corridas.forEach((corrida) => {
+    console.log(corrida["event-title"]);
+  });
   return (
     <>
       <h1>Corridas</h1>
       <div className={style.races}>
-        {races === undefined
+        {Object.values(corridas).map((evento) => {
+          return (
+            <div key={evento["event-title"]} className={style.raceCard}>
+              <RaceThumb raceTHUMB={evento["event-thumb"]} />
+              <h4 className={style.raceCard__title}>{evento["event-title"]}</h4>
+              <div className={style.raceCard__infos}></div>
+              <a className={style.linkBtn} href={evento["event-page"]} target='_blank'>
+                Saiba Mais
+              </a>
+            </div>
+          );
+        })}
+        {/* {races === undefined
           ? ""
           : Object.values(races).map((race) => {
               return (
@@ -38,7 +53,8 @@ const RacesView = () => {
                   </a>
                 </div>
               );
-            })}
+            })} */}
+        {}
       </div>
     </>
   );

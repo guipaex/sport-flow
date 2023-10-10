@@ -1,0 +1,64 @@
+.header {
+  width: 80vw;
+  max-width: 1440px;
+  height: 5rem;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.logo {
+  text-transform: uppercase;
+  font-weight: 800;
+  font-style: italic;
+  font-family: "Anton";
+  font-size: 2.5rem;
+}
+.menu {
+  display: flex;
+}
+
+.btn__login {
+  border: none;
+  width: fit-content;
+  height: fit-content;
+  background: white;
+  padding: 0.7rem 1.2rem;
+  border-radius: 0.75rem;
+  font-family: "Sora", sans-serif;
+  line-height: 1.75rem;
+  display: flex;
+  cursor: pointer;
+}
+.btn__icon {
+  width: 1.5rem;
+  height: auto;
+  margin: auto;
+  margin-right: 0.5rem;
+}
+.profile {
+  height: 3rem;
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  gap: 0.75rem;
+  padding: 0 1rem;
+  &__pic {
+    border-radius: 100%;
+    width: 2.5rem;
+    height: auto;
+    padding: 0;
+    border: 3px solid #000000;
+  }
+}
+.btn__addEvent {
+  display: none;
+}
+@media screen and (max-width: 440px) {
+  .logo {
+    font-size: 1.5rem;
+  }
+  .profile__saudation {
+    display: none;
+  }
+}
