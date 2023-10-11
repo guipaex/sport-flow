@@ -1,0 +1,111 @@
+@import "../../utils/variables.scss";
+
+.raceCard {
+  width: 300px;
+  height: 460px;
+  padding: 1rem;
+  border-radius: 1rem;
+  background-color: white;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  text-decoration: none;
+  color: black;
+}
+.sport {
+  text-align: right;
+  font-family: "Rubik", sans-serif;
+  font-weight: 600;
+  font-size: 1rem;
+  text-transform: uppercase;
+  background-color: white;
+  border-radius: 20%;
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 10;
+  border-radius: 16px;
+  border-top-left-radius: 0;
+
+  &__icon {
+    width: 3rem;
+    height: 2.25rem;
+    margin: 0.5rem;
+  }
+}
+
+.eventThumb {
+  width: 17rem;
+  height: 15rem;
+  object-fit: cover;
+  border-radius: 1rem;
+}
+.date {
+  margin: 0.5rem auto;
+  font-weight: 400;
+  font-size: 1rem;
+  font-family: "Rubik", sans-serif;
+  text-align: left;
+}
+.title {
+  margin: 0.75rem auto;
+  font-family: "Rubik", sans-serif;
+  font-weight: 600;
+  text-align: left;
+  line-height: 100%;
+}
+
+.distance {
+  padding: 0;
+  margin: 0.3rem auto;
+  display: flex;
+  list-style: none;
+  gap: 0.5rem;
+  justify-content: left;
+
+  &__tag {
+    flex-grow: 1;
+    max-width: 3.75rem;
+    background-color: cornflowerblue;
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.5rem;
+    font-size: 0.8rem;
+    font-family: "rubik", sans-serif;
+  }
+}
+
+.moreInfo {
+  display: flex;
+  text-emphasis-position: bottom;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+  height: 3rem;
+}
+
+.local {
+  font-family: Rubik;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: normal;
+  width: 7rem;
+  height: fit-content;
+  margin: 0;
+  align-self: flex-end;
+}
+
+.priceTag {
+  align-self: flex-end;
+  width: 6rem;
+  text-align: right;
+  font-family: Rubik;
+  font-size: 1rem;
+  font-weight: 400;
+  margin: 0;
+
+  &__value {
+    margin: 0;
+    line-height: 100%;
+    font-family: Rubik;
+    color: darkblue;
+    font-size: 1.25rem;
+    font-weight: 600;
+  }
+}
