@@ -6,7 +6,7 @@ export default function RaceRegister() {
   return (
     <section className={style.container}>
       <h1>CADASTRO DE EVENTO</h1>
-      <RaceForm />
+      {/* <RaceForm /> */}
     </section>
   );
 }

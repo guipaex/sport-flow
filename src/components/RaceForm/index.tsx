@@ -2,7 +2,7 @@ import React, { useState, useContext } from "react";
 import style from "./styles.module.css";
 import { db } from "../../services/firebase";
 import { collection, addDoc } from "firebase/firestore";
-import { Race } from "../../utils/interfaces";
+import { IRaceCardData } from "../../utils/interfaces";
 import { AuthGoogleContext } from "../../contexts/authGoogle";
 
 function RaceForm() {
@@ -13,15 +13,14 @@ function RaceForm() {
   const [local, setLocal] = useState<string>("");
   const [eventlink, setEventLink] = useState<string>("");
 
-  async function uploadRace(data: Race) {
+  async function uploadRace(data: IRaceCardData) {
     try {
       addDoc(collection(db, "races"), {
-        name: data.raceName,
-        date: data.raceDate,
-        distances: data.distances,
-        link: data.link,
+        // name: data.raceName,
+        // date: data.raceDate,
+        // distances: data.distances,
+        // link: data.link,
       });
-      // console.log("Document written with ID: ", race.id);
       setStatus(false);
       if (!status) {
         resetForm();
@@ -33,14 +32,14 @@ function RaceForm() {
   function handleRace(e: React.FormEvent) {
     e.preventDefault();
     setStatus(true);
-    const raceData: Race = {
-      raceName: name,
-      raceDate: date,
-      distances: filterDistances(distances),
-      local: local,
-      link: eventlink,
-    };
-    uploadRace(raceData);
+    // const raceData: Race = {
+    //   raceName: name,
+    //   raceDate: date,
+    //   distances: filterDistances(distances),
+    //   local: local,
+    //   link: eventlink,
+    // };
+    // uploadRace(raceData);
   }
 
   function filterDistances(data) {

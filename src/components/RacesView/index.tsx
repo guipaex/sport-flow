@@ -3,7 +3,6 @@ import style from "./styles.module.scss";
 import { db } from "../../services/firebase";
 import { collection, getDocs } from "firebase/firestore";
 import RaceCard from "../RaceCard";
-import { IRaceCardData } from "../../utils/interfaces";
 
 const RacesView = () => {
   const [races, setRaces] = useState<Object>();
@@ -21,11 +20,13 @@ const RacesView = () => {
     <section className={style.container}>
       <h1 className={style.title}>Corridas</h1>
       <div className={style.gallery}>
-        {races === undefined
-          ? ""
-          : Object.values(races).map((race) => {
-              return <RaceCard key={race.id} raceData={race} />;
-            })}
+        {races === undefined ? (
+          <h1 className={style.title}>Carregando resultados...</h1>
+        ) : (
+          Object.values(races).map((race) => {
+            return <RaceCard key={race.id} raceData={race} />;
+          })
+        )}
       </div>
     </section>
   );
