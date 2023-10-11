@@ -17,14 +17,13 @@
   font-weight: 600;
   font-size: 1rem;
   text-transform: uppercase;
-  background-color: white;
+  background-color: $White_2;
   border-radius: 20%;
   position: absolute;
   right: 0;
   top: 0;
   z-index: 10;
-  border-radius: 16px;
-  border-top-left-radius: 0;
+  border-radius: 0 0 0 1.3rem;
 
   &__icon {
     width: 3rem;

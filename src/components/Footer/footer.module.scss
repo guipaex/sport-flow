@@ -1,28 +1,21 @@
+@import "../../utils/variables.scss";
+
 footer {
-  background-color: #192126;
-  height: 1.5rem;
-  width: 80%;
-  max-width: 1440px;
-  margin: 0.5rem auto;
-  padding: 0.5rem 2rem;
+  background-color: $Black;
+  color: $White_2;
+  max-width: $desktop-max;
+  height: 2.25rem;
+  font-family: "Rubik", sans-serif;
+  font-size: 0.8rem;
+  margin: 1.5rem auto 0.5rem auto;
+  padding: 0.5rem 1rem;
   border-radius: 0.5rem;
   display: flex;
   justify-content: center;
   align-items: center;
-  color: white;
   text-decoration: none;
 
-  & p {
-    font-size: 0.75rem;
-    margin: none;
-  }
   & a {
-    color: white;
-    border: none;
-    margin: none;
-    padding: none;
-    width: fit-content;
-    height: fit-content;
-    text-decoration: underline;
+    color: $White_2;
   }
 }

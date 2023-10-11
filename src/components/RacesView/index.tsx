@@ -16,7 +16,7 @@ const RacesView = () => {
 
   useEffect(() => {
     setTimeout(() => {
-      // getRaces();
+      getRaces();
     }, 3000);
   }, []);
   return (

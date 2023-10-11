@@ -4,7 +4,7 @@ export default function Footer() {
   return (
     <footer>
       <p>
-        © 2023 - SportSync || Tudo em um só lugar - Desenvolvido por<a href='https://guipaes.com'>Guilherme Paes</a>
+        © 2023 - Desenvolvido por <a href='https://guipaes.com'>Guilherme Paes</a>
       </p>
     </footer>
   );
