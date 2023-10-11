@@ -2,10 +2,11 @@
 
 .raceCard {
   width: 300px;
-  height: 460px;
+  height: fit-content;
+  max-height: 460px;
   padding: 1rem;
   border-radius: 1rem;
-  background-color: white;
+  background-color: $White_2;
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
   text-decoration: none;
   color: black;
@@ -47,28 +48,35 @@
 }
 .title {
   margin: 0.75rem auto;
+  height: fit-content;
+  width: 100%;
   font-family: "Rubik", sans-serif;
   font-weight: 600;
+  font-size: 1.2rem;
   text-align: left;
   line-height: 100%;
+  text-transform: uppercase;
 }
 
 .distance {
   padding: 0;
-  margin: 0.3rem auto;
+  margin: 1rem auto;
   display: flex;
   list-style: none;
   gap: 0.5rem;
   justify-content: left;
 
   &__tag {
+    text-align: center;
     flex-grow: 1;
     max-width: 3.75rem;
-    background-color: cornflowerblue;
-    padding: 0.25rem 0.5rem;
+    padding: 0.3rem 0.5rem;
     border-radius: 0.5rem;
     font-size: 0.8rem;
     font-family: "rubik", sans-serif;
+    font-weight: 400;
+    color: $White;
+    background-color: $Highlight_2;
   }
 }
 
@@ -85,27 +93,25 @@
   font-size: 1rem;
   font-weight: 400;
   line-height: normal;
-  width: 7rem;
   height: fit-content;
   margin: 0;
   align-self: flex-end;
 }
 
 .priceTag {
+  margin: 0;
   align-self: flex-end;
   width: 6rem;
   text-align: right;
   font-family: Rubik;
-  font-size: 1rem;
+  font-size: 0.8rem;
   font-weight: 400;
-  margin: 0;
-
+  line-height: 1.2rem;
   &__value {
-    margin: 0;
     line-height: 100%;
     font-family: Rubik;
-    color: darkblue;
-    font-size: 1.25rem;
+    color: $Highlight_2;
+    font-size: 1.5rem;
     font-weight: 600;
   }
 }
