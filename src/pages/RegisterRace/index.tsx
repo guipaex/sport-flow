@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import { useContext } from "react";
 import style from "./styles.module.scss";
 import RaceForm from "../../components/RaceForm";
 import { AuthGoogleContext } from "../../contexts/authGoogle";
