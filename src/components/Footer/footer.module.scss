@@ -1,0 +1,21 @@
+@import "../../utils/variables.scss";
+
+footer {
+  background-color: $Black;
+  color: $White_2;
+  max-width: $desktop-max;
+  height: 2.25rem;
+  font-family: "Rubik", sans-serif;
+  font-size: 0.8rem;
+  margin: 1.5rem auto 0.5rem auto;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+
+  & a {
+    color: $White_2;
+  }
+}

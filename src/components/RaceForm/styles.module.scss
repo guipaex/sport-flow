@@ -1,0 +1,75 @@
+@import "../../utils/variables.scss";
+
+.form {
+  margin: auto;
+  flex-wrap: wrap;
+  padding: 2rem;
+  min-width: $desktop-max;
+  border-radius: 1rem;
+  background-color: $White_2;
+  justify-content: center;
+  filter: drop-shadow(0 0.25rem 0.5rem rgba(0, 0, 0, 0.1));
+}
+.fieldset {
+  border: none;
+  padding: 1rem;
+  margin: auto;
+  margin: 1rem auto;
+}
+
+.inputGroup {
+  margin: 2rem auto;
+  max-width: 640px;
+  position: relative;
+}
+
+.inputGroup input {
+  padding: 1rem 0.75em;
+  line-height: 1rem;
+  outline: none;
+  border: 1px solid $Black_2;
+  border-radius: 0.8rem;
+  background-color: $White_2;
+  width: 100%;
+}
+
+.inputGroup label {
+  position: absolute;
+  line-height: 1rem;
+  left: 0.5rem;
+  padding: 0.3rem;
+  pointer-events: none;
+  transition: all 0.3s ease;
+  color: $Black_2;
+  background-color: $White_2;
+  transform: translateY(50%);
+  & span {
+    color: $Red;
+  }
+}
+
+.inputGroup :is(input:focus) ~ label {
+  transform: translateY(-75%) scale(0.9);
+  color: $Highlight_2;
+}
+
+.inputGroup :is(input:focus) {
+  border-color: rgb(150, 150, 200);
+}
+
+.submitBTN {
+  background-color: $Highlight_1;
+  font-weight: 700;
+  border: none;
+  border-radius: 5rem;
+  width: 10rem;
+  padding: 0.75rem 0;
+  margin-top: 2rem;
+  color: $Black;
+  cursor: pointer;
+}
+.submitBTN:hover {
+  transition: 200ms;
+  color: $White_2;
+  background-color: $Highlight_2;
+}

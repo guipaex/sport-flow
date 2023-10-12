@@ -1,0 +1,80 @@
+@import "../../utils/variables.scss";
+
+.loader {
+  color: $Black_2;
+  font-family: "Rubik", sans-serif;
+  font-weight: 500;
+  font-size: 2rem;
+  text-transform: uppercase;
+  -webkit-box-sizing: content-box;
+  box-sizing: content-box;
+  height: 3rem;
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.fixed {
+  margin: auto;
+}
+.words {
+  margin: auto;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  height: 3rem;
+}
+
+.word {
+  display: block;
+  line-height: 3rem;
+  padding-left: 6px;
+  color: $Highlight_2;
+  animation: text_spin 4s infinite;
+
+  @media screen and (max-width: 460px) {
+    text-align: center;
+  }
+}
+
+@keyframes text_spin {
+  10% {
+    -webkit-transform: translateY(-105%);
+    transform: translateY(-105%);
+  }
+
+  25% {
+    -webkit-transform: translateY(-100%);
+    transform: translateY(-100%);
+  }
+
+  35% {
+    -webkit-transform: translateY(-205%);
+    transform: translateY(-205%);
+  }
+
+  50% {
+    -webkit-transform: translateY(-200%);
+    transform: translateY(-200%);
+  }
+
+  60% {
+    -webkit-transform: translateY(-305%);
+    transform: translateY(-305%);
+  }
+
+  75% {
+    -webkit-transform: translateY(-300%);
+    transform: translateY(-300%);
+  }
+
+  85% {
+    -webkit-transform: translateY(-405%);
+    transform: translateY(-405%);
+  }
+
+  100% {
+    -webkit-transform: translateY(-400%);
+    transform: translateY(-400%);
+  }
+}

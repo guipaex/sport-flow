@@ -1,0 +1,116 @@
+@import "../../utils/variables.scss";
+
+.raceCard {
+  width: 300px;
+  height: fit-content;
+  max-height: 460px;
+  padding: 1rem;
+  border-radius: 1rem;
+  background-color: $White_2;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  text-decoration: none;
+  color: black;
+}
+.sport {
+  text-align: right;
+  font-family: "Rubik", sans-serif;
+  font-weight: 600;
+  font-size: 1rem;
+  text-transform: uppercase;
+  background-color: $White_2;
+  border-radius: 20%;
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 10;
+  border-radius: 0 0 0 1.3rem;
+
+  &__icon {
+    width: 3rem;
+    height: 2.25rem;
+    margin: 0.5rem;
+  }
+}
+
+.eventThumb {
+  width: 17rem;
+  height: 15rem;
+  object-fit: cover;
+  border-radius: 1rem;
+}
+.date {
+  margin: 0.5rem auto;
+  font-weight: 400;
+  font-size: 1rem;
+  font-family: "Rubik", sans-serif;
+  text-align: left;
+}
+.title {
+  margin: 0.75rem auto;
+  height: fit-content;
+  width: 100%;
+  font-family: "Rubik", sans-serif;
+  font-weight: 600;
+  font-size: 1.2rem;
+  text-align: left;
+  line-height: 100%;
+  text-transform: uppercase;
+}
+
+.distance {
+  padding: 0;
+  margin: 1rem auto;
+  display: flex;
+  list-style: none;
+  gap: 0.5rem;
+  justify-content: left;
+
+  &__tag {
+    text-align: center;
+    flex-grow: 1;
+    max-width: 3.75rem;
+    padding: 0.3rem 0.5rem;
+    border-radius: 0.5rem;
+    font-size: 0.8rem;
+    font-family: "rubik", sans-serif;
+    font-weight: 400;
+    color: $White;
+    background-color: $Highlight_2;
+  }
+}
+
+.moreInfo {
+  display: flex;
+  text-emphasis-position: bottom;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+  height: 3rem;
+}
+
+.local {
+  font-family: Rubik;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: normal;
+  height: fit-content;
+  margin: 0;
+  align-self: flex-end;
+}
+
+.priceTag {
+  margin: 0;
+  align-self: flex-end;
+  width: 6rem;
+  text-align: right;
+  font-family: Rubik;
+  font-size: 0.8rem;
+  font-weight: 400;
+  line-height: 1.2rem;
+  &__value {
+    line-height: 100%;
+    font-family: Rubik;
+    color: $Highlight_2;
+    font-size: 1.5rem;
+    font-weight: 600;
+  }
+}

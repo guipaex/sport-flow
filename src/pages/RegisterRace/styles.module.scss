@@ -1,0 +1,10 @@
+@import "../../utils/variables.scss";
+.container {
+  text-align: center;
+  max-width: $desktop-max;
+  margin: auto;
+  color: #192126;
+}
+h1 {
+  font-weight: 900;
+}

@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
-import style from "./styles.module.css";
+import style from "./styles.module.scss";
 import { db } from "../../services/firebase";
 import { collection, getDocs } from "firebase/firestore";
+import RaceCard from "../RaceCard";
+import Loader from "../Loader";
 
 const RacesView = () => {
   const [races, setRaces] = useState<Object>();
@@ -11,25 +13,25 @@ const RacesView = () => {
     const data = await getDocs(racesCollection);
     setRaces(data.docs.map((item) => ({ ...item.data(), id: item.id })));
   };
+
   useEffect(() => {
-    getRaces();
+    setTimeout(() => {
+      getRaces();
+    }, 3000);
   }, []);
   return (
-    <>
-      <h1>Corridas</h1>
-      <div className={style.races}>
-        {races === undefined
-          ? ""
-          : Object.values(races).map((race) => {
-              console.log(race[0]);
-              return (
-                <div key={race.id} className={style.raceCard}>
-                  <h4>{race.name}</h4>
-                </div>
-              );
-            })}
+    <section className={style.container}>
+      <h1 className={style.title}>Corridas</h1>
+      <div className={style.gallery}>
+        {races === undefined ? (
+          <Loader />
+        ) : (
+          Object.values(races).map((race) => {
+            return <RaceCard key={race.id} raceData={race} />;
+          })
+        )}
       </div>
-    </>
+    </section>
   );
 };
 
