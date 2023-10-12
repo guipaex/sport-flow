@@ -2,20 +2,6 @@ import style from "./raceCard.module.scss";
 import { FaRegCalendar } from "react-icons/fa";
 import { PiSneakerMoveBold } from "react-icons/pi";
 
-enum Months {
-  JAN = 1,
-  FEV,
-  MAR,
-  ABR,
-  MAI,
-  JUN,
-  JUL,
-  AGO,
-  SET,
-  OUT,
-  NOV,
-  DEZ,
-}
 export default function RaceCard(raceData: any) {
   const data = raceData.raceData;
   let eventDistances = [];
@@ -23,19 +9,29 @@ export default function RaceCard(raceData: any) {
     eventDistances.push(element.replace("km", ""));
   });
 
-  // const formatedData = () => {
-  //   const dataValues = data.date.split("-");
-  //   const formatedMoth = parseInt(dataValues[1]);
-
-  //   return `${dataValues[2]} ${Months[formatedMoth]} ${dataValues[0]}`;
-  // };
-
   const getThumbURL = () => {
     const imageAdress = data.images;
     if (imageAdress === undefined || imageAdress === null) {
       return "";
     } else {
-      return Object.values(imageAdress).join().replace(/\,/, "");
+      return Object.values(imageAdress).join().replace(/,/, "");
+    }
+  };
+
+  const getLocation = (param) => {
+    const location = data.location;
+
+    if (location === undefined || location === null) {
+      return "";
+    } else {
+      switch (param) {
+        case "start":
+          return location.start;
+        case "city":
+          return location.city;
+        case "state":
+          return location.state;
+      }
     }
   };
 
@@ -58,7 +54,7 @@ export default function RaceCard(raceData: any) {
       </ul>
       <span className={style.moreInfo}>
         <p className={style.local}>
-          {data.city} - {data.state}
+          {getLocation("city")} - {getLocation("state")}
         </p>
         <p className={style.priceTag}>
           A partir de <span className={style.priceTag__value}>{data.minimunPrice}</span>
