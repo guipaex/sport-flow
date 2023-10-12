@@ -1,20 +1,3 @@
-export interface IRaceCardData {
-  id?:string,
-  title?: string,
-  date?: Date,
-	distances?: [Array: Number],
-  local?: {
-    start?:string,
-    city?: string,
-    state?: string,
-  },
-	thumbURL?: string,
-  pageLink?: string,
-	sportType?: string,
-  distance?: Array<String>,
-  price?: number,
-}
-
 export interface RaceData {
   eventId: string,
   eventName: string,
@@ -31,4 +14,19 @@ export interface RaceData {
   },
   eventPage: string,
   minimunPrice: string,
+}
+
+export enum Months {
+  JAN = 1,
+  FEV,
+  MAR,
+  ABR,
+  MAI,
+  JUN,
+  JUL,
+  AGO,
+  SET,
+  OUT,
+  NOV,
+  DEZ,
 }
