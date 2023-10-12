@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import style from "./styles.module.css";
+import style from "./styles.module.scss";
 import { db } from "../../services/firebase";
-import { collection, addDoc, doc, setDoc } from "firebase/firestore";
+import { doc, setDoc } from "firebase/firestore";
 import { v4 as uuidv4 } from "uuid";
-import { RaceData } from "../../utils/interfaces";
+import { RaceData, Months } from "../../utils/interfaces";
 
 function RaceForm() {
   const [formData, setFormData] = useState({
@@ -31,8 +31,8 @@ function RaceForm() {
     const raceData: RaceData = {
       eventId: uuidv4(),
       eventName: formData.eventName,
-      eventDate: formData.eventDate,
-      distances: filterDistances(formData.distances),
+      eventDate: formatDate(formData.eventDate),
+      distances: formatDistances(formData.distances),
       location: {
         start: formData.start,
         city: formData.city,
@@ -48,10 +48,18 @@ function RaceForm() {
     uploadRace(raceData);
   };
 
-  function filterDistances(data) {
+  function formatDistances(data) {
     let distances = data.split(",");
     return distances;
   }
+
+  const formatDate = (data) => {
+    const dataValues = data.split("-");
+    const month = parseInt(dataValues[1]);
+
+    console.log(dataValues[2] + Months[month] + dataValues[0]);
+    return `${dataValues[2]} ${Months[month]} ${dataValues[0]}`;
+  };
 
   async function uploadRace(data: any) {
     try {
@@ -61,110 +69,80 @@ function RaceForm() {
     }
   }
   return (
-    <form id='race-form' className={style.formulario} onSubmit={handleSubmit}>
-      <label className={style.label} htmlFor='inputName'>
-        Nome do Evento
-      </label>
-      <input
-        type='text'
-        name='eventName'
-        className={style.inputText}
-        placeholder='Nome do Evento'
-        value={formData.eventName}
-        onChange={handleChange}
-      />
+    <form id='race-form' className={style.form} onSubmit={handleSubmit}>
+      <fieldset className={style.fieldset}>
+        {/* NOME DO EVENTO */}
+        <div className={style.inputGroup}>
+          <input
+            type='text'
+            name='eventName'
+            className={style.inputText}
+            value={formData.eventName}
+            onChange={handleChange}
+            required
+          />
+          <label className={style.label} htmlFor='eventName'>
+            Nome do Evento <span>*</span>
+          </label>
+        </div>
+        {/* DATA DO EVENTO */}
+        <div className={style.inputGroup}>
+          <input required type='date' name='eventDate' value={formData.eventDate} onChange={handleChange} />
+          <label className={style.label} htmlFor='eventDate'>
+            Data do Evento <span>*</span>
+          </label>
+        </div>
+        {/*KILOMETRAGENS*/}
+        <div className={style.inputGroup}>
+          <input required type='text' name='distances' value={formData.distances} onChange={handleChange} />
+          <label className={style.label} htmlFor='distances'>
+            Distâncias <span>*</span>
+          </label>
+        </div>
+      </fieldset>
 
-      <label className={style.label} htmlFor='inputName'>
-        Cole a URL da imagem do evento:
-      </label>
-      <input
-        type='text'
-        name='thumbURL'
-        className={style.inputText}
-        placeholder='Nome do Evento'
-        value={formData.thumbURL}
-        onChange={handleChange}
-      />
-
-      <label className={style.label} htmlFor='inputName'>
-        Data do Evento
-      </label>
-      <input
-        type='date'
-        name='eventDate'
-        className={style.inputDate}
-        value={formData.eventDate}
-        onChange={handleChange}
-      />
-      <label className={style.label} htmlFor='inputName'>
-        Distâncias
-      </label>
-      <input
-        className={style.inputText}
-        type='text'
-        name='distances'
-        placeholder='Ex.: 5km, 10km, 21km'
-        value={formData.distances}
-        onChange={handleChange}
-      />
-      <label className={style.label} htmlFor='inputName'>
-        Local da Largada
-      </label>
-      <input
-        className={style.inputText}
-        type='text'
-        name='start'
-        placeholder='Ex.: Monumento dos Pracinhas'
-        value={formData.start}
-        onChange={handleChange}
-      />
-      <label className={style.label} htmlFor='inputName'>
-        Cidade
-      </label>
-      <input
-        className={style.inputText}
-        type='text'
-        name='city'
-        placeholder='Ex.: Rio de Janeiro'
-        value={formData.city}
-        onChange={handleChange}
-      />
-      <label className={style.label} htmlFor='inputName'>
-        Estado
-      </label>
-      <input
-        className={style.inputText}
-        type='text'
-        name='state'
-        placeholder='Ex.: RJ'
-        value={formData.state}
-        onChange={handleChange}
-      />
-      <label className={style.label} htmlFor='inputName'>
-        Página do Evento
-      </label>
-      <input
-        type='text'
-        name='eventPage'
-        className={style.inputText}
-        placeholder='Página de Inscrição'
-        value={formData.eventPage}
-        onChange={handleChange}
-      />
-      <label className={style.label} htmlFor='inputName'>
-        Quanto custa o Kit mais barato?
-      </label>
-      <input
-        type='text'
-        name='minimumPrice'
-        className={style.inputText}
-        placeholder='Página de Inscrição'
-        value={formData.minimumPrice}
-        onChange={handleChange}
-      />
+      <fieldset className={style.fieldset}>
+        <div className={style.inputGroup}>
+          <input className={style.inputText} type='text' name='start' value={formData.start} onChange={handleChange} />
+          <label className={style.label} htmlFor='start'>
+            Local da Largada
+          </label>
+        </div>
+        <div className={style.inputGroup}>
+          <input className={style.inputText} type='text' name='city' value={formData.city} onChange={handleChange} />
+          <label className={style.label} htmlFor='city'>
+            Cidade <span>*</span>
+          </label>
+        </div>
+        <div className={style.inputGroup}>
+          <input className={style.inputText} type='text' name='state' value={formData.state} onChange={handleChange} />
+          <label className={style.label} htmlFor='sate'>
+            Estado <span>*</span>
+          </label>
+        </div>
+      </fieldset>
+      <fieldset className={style.fieldset}>
+        <div className={style.inputGroup}>
+          <input type='text' name='eventPage' value={formData.eventPage} onChange={handleChange} />
+          <label className={style.label} htmlFor='eventPage'>
+            Página do Evento <span>*</span>
+          </label>
+        </div>
+        <div className={style.inputGroup}>
+          <input type='text' name='minimumPrice' value={formData.minimumPrice} onChange={handleChange} />
+          <label className={style.label} htmlFor='minimumPrice'>
+            Menor preço do Kit <span>*</span>
+          </label>
+        </div>
+        <div className={style.inputGroup}>
+          <input type='text' name='thumbURL' value={formData.thumbURL} onChange={handleChange} />
+          <label className={style.label} htmlFor='thumbURL'>
+            Link para imagem:
+          </label>
+        </div>
+      </fieldset>
       <input className={style.submitBTN} type='submit' value={"Cadastrar Prova"} />
     </form>
-    // <p>Codando... </p>
   );
 }
 
