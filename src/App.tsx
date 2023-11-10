@@ -4,7 +4,8 @@ import Home from "./pages/Home";
 import { AuthGoogleProvider } from "./contexts/authGoogle";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
-import RaceRegister from "./pages/RegisterRace";
+import About from "./pages/About";
+import Contact from "./pages/Contact";
 
 function App() {
   return (
@@ -14,7 +15,8 @@ function App() {
           <Header />
           <Routes>
             <Route Component={Home} path='/' />
-            <Route Component={RaceRegister} path='/cadastro-corrida' />
+            <Route Component={About} path='/sobre' />
+            <Route Component={Contact} path='/contato' />
           </Routes>
         </AuthGoogleProvider>
       </Router>

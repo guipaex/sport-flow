@@ -38,17 +38,12 @@ export default function Header() {
           })}
         >
           <li>
-            <Link className={style.menu__item} to='about' onClick={() => setIsOpen(!isOpen)}>
+            <Link className={style.menu__item} to='sobre' onClick={() => setIsOpen(!isOpen)}>
               Sobre
             </Link>
           </li>
           <li>
-            <Link className={style.menu__item} to='projects' onClick={() => setIsOpen(!isOpen)}>
-              Corridas
-            </Link>
-          </li>
-          <li>
-            <Link className={style.menu__item} to='contact' onClick={() => setIsOpen(!isOpen)}>
+            <Link className={style.menu__item} to='contato' onClick={() => setIsOpen(!isOpen)}>
               Contato
             </Link>
           </li>

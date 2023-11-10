@@ -14,7 +14,7 @@ export default function RaceCard(raceData: any) {
     if (imageAdress === undefined || imageAdress === null) {
       return "";
     } else {
-      return Object.values(imageAdress).join().replace(/,/, "");
+      return imageAdress.thumbURL;
     }
   };
 
