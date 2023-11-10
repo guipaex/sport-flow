@@ -30,9 +30,7 @@ a,
   max-width: 20rem;
   padding: 0.5rem 0.75rem;
   border-radius: 0.75rem;
-  @media (max-width: $mobile) {
-    display: none;
-  }
+  display: none;
 }
 .menu {
   display: flex;

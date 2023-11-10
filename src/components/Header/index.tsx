@@ -1,10 +1,9 @@
-import style from "./header.module.scss";
 import React from "react";
+import style from "./header.module.scss";
 import logo from "../../assets/svg/logo_light.svg";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import classNames from "classnames";
-// import { Link } from "react-scroll";
 import { PiListBold, PiXBold } from "react-icons/pi";
 
 export default function Header() {
@@ -20,6 +19,7 @@ export default function Header() {
       document.body.style.overflow = "auto"; // Certifique-se de restaurar o scroll ao desmontar o componente
     };
   }, [isOpen]);
+
   return (
     <header className={style.header}>
       <Link to='/' onClick={() => setIsOpen(false)}>
