@@ -1,3 +1,4 @@
+//COLORS
 $Black: #262e31;
 $Black_2: #41484e;
 $White: #e7eaf0;
@@ -8,8 +9,12 @@ $Highlight_2: #4946b4;
 $Red: #f0635a;
 $Green: #29d697;
 
-$desktop-max: 80%;
+$Dark: #262e31;
+$LightGreen: #96fc58;
 
-$border_1: 1.5rem;
-$border_2: 1rem;
-$border_3: 0.75rem;
+//BREAKPOINTS
+$mobile: 768px;
+$desktop_xsm: 980px;
+$desktop_sm: 1080px;
+$desktop_md: 1280px;
+$desktop-max: 1440px;
