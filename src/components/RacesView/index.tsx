@@ -15,9 +15,7 @@ const RacesView = () => {
   };
 
   useEffect(() => {
-    setTimeout(() => {
-      getRaces();
-    }, 3000);
+    getRaces();
   }, []);
   return (
     <section className={style.container}>

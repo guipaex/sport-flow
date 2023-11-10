@@ -1,8 +1,8 @@
 {
-  "short_name": "Sports Flow",
-  "name": "Sports Flow | Seu portal de eventos esportivos",
+  "short_name": "Sport Flow",
+  "name": "Sport Flow | Seu portal de Corridas de Rua.",
   "start_url": ".",
   "display": "standalone",
   "theme_color": "#000000",
-  "background_color": "#96FC58"
+  "background_color": "#262e31"
 }
