@@ -47,7 +47,7 @@
     cursor: pointer;
     position: relative;
     &:hover::after {
-      width: 95%;
+      width: 100%;
       left: 0;
     }
     &::after {
