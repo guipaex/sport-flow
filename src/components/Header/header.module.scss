@@ -2,26 +2,24 @@
 
 .header {
   position: fixed;
+  top: 0;
   left: 0;
   right: 0;
-  max-width: 1440px;
+  max-width: $desktop-max;
+  height: 5rem;
   padding: 1.5rem 3rem;
   margin: auto;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: $Dark;
+  background-color: $DarkGreen;
   z-index: 10;
+  @media (max-width: $mobile) {
+    padding: 1.5rem 1rem;
+  }
 }
-a,
-.logo {
-  text-decoration: none;
-  padding: 0;
-  margin: 0;
-  padding: 0;
+.logo img {
   height: 3rem;
-  width: fit-content;
-  color: white;
   z-index: 2;
 }
 .search {
@@ -41,6 +39,8 @@ a,
     list-style: none;
   }
   &__item {
+    color: white;
+    text-decoration: none;
     padding: 0.3rem 0.5rem;
     font-weight: 400;
     line-height: 1rem;
@@ -78,7 +78,7 @@ a,
       justify-content: center;
       align-items: center;
       gap: 2rem;
-      background-color: $Dark;
+      background-color: $DarkGreen;
       backdrop-filter: blur(15px);
       transition: 500ms;
       z-index: -1;

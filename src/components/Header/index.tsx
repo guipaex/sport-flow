@@ -22,8 +22,8 @@ export default function Header() {
 
   return (
     <header className={style.header}>
-      <Link to='/' onClick={() => setIsOpen(false)}>
-        <img src={logo} className={style.logo} alt='Logo Sports Flow' />
+      <Link to='/' onClick={() => setIsOpen(false)} className={style.logo}>
+        <img src={logo} alt='Logo Sport Flow' />
       </Link>
       <input type='text' placeholder='Procurar...' className={style.search} />
       <nav className={style.menu}>
