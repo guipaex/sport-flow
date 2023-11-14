@@ -1,0 +1,57 @@
+@import "../../utils/variables.scss";
+
+.container {
+  max-width: $desktop-max;
+  height: 100vh;
+  margin: auto;
+  padding: clamp(1rem, 5vw, 2.5rem);
+  margin-top: $HeaderHeight;
+  color: $DarkGreen;
+}
+.title {
+  text-transform: uppercase;
+  max-width: $mobile;
+  text-align: center;
+  font-weight: 900;
+  font-size: clamp(1.5rem, 5vw, 3rem);
+  margin: auto;
+  padding: clamp(2rem, 5vw, 3.5rem);
+  border-radius: 2rem;
+  color: $LightGreen;
+  background-color: $DarkGreen;
+}
+
+.content {
+  max-width: $mobile;
+  margin: 1.5rem auto;
+  & h2 {
+    margin: 0.75rem auto;
+  }
+  & p {
+    margin: 0.5rem auto;
+    & .ig {
+      width: fit-content;
+      color: $DarkGreen;
+      display: flex;
+      gap: 0.25rem;
+      align-items: center;
+      font-size: 1rem;
+      text-decoration: none;
+      font-weight: 700;
+      line-height: 2.5rem;
+      &__icon {
+        width: 1.5rem;
+        height: 100%;
+      }
+    }
+  }
+}
+
+@media (max-width: $mobile) {
+  .content {
+    text-align: center;
+  }
+  .ig {
+    margin: auto;
+  }
+}
