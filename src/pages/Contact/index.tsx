@@ -7,7 +7,6 @@ export default function Contact() {
   const [formData, setFormData] = useState<ContactValues>({
     name: "",
     email: "",
-    subject: "",
     message: "",
   });
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -15,6 +14,7 @@ export default function Contact() {
     setFormData((prevData) => ({ ...prevData, [name]: value }));
   };
   const handleSubmit = (e: React.FormEvent) => {
+    const emailPattern = "[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+.[a-zA-Z],{2,}";
     e.preventDefault();
     // Lógica para lidar com o envio do formulário
     alert("Formulario enviado");
@@ -41,7 +41,7 @@ export default function Contact() {
             id='name'
             type='text'
             name='name'
-            placeholder='Luciana Almeida'
+            placeholder='Seu Nome e Sobrenome'
             value={formData.name}
             onChange={handleChange}
             className={style.form__input}
@@ -55,22 +55,10 @@ export default function Contact() {
           <input
             id='email'
             type='text'
+            pattern='[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z],{2,}'
             name='email'
             placeholder='email@mail.com'
             value={formData.email}
-            onChange={handleChange}
-            className={style.form__input}
-          />
-        </div>
-
-        <div className={style.form__field}>
-          <label htmlFor='subject'>Assunto:</label>
-          <input
-            id='subject'
-            type='text'
-            name='subject'
-            placeholder='Motivo do Contato'
-            value={formData.subject}
             onChange={handleChange}
             className={style.form__input}
           />
