@@ -1,80 +1,97 @@
 @import "../../utils/variables.scss";
 
-.loader {
-  color: $Black_2;
+.raceCard {
+  position: relative;
+  min-width: 250px;
+  height: fit-content;
+  max-height: 460px;
+  padding: 1rem;
+  border-radius: 1rem;
+  background: linear-gradient(90deg, #b6b6b6, #cacaca, #b6b6b6);
+  background-size: 200% 200%;
+  animation: gradient 2s linear infinite;
+}
+.sport {
   font-family: "Rubik", sans-serif;
-  font-weight: 500;
-  font-size: 2rem;
-  text-transform: uppercase;
-  -webkit-box-sizing: content-box;
-  box-sizing: content-box;
-  height: 3rem;
-  margin: auto;
+  width: 40px;
+  height: 40px;
+  border-radius: 30%;
+  position: absolute;
+  right: 20px;
+  top: 25px;
+  z-index: 10;
+  background-color: #a8a8a8;
+}
+
+.eventThumb {
+  width: 17rem;
+  height: 15rem;
+  border-radius: 1rem;
+  background-color: rgb(218, 218, 218);
+  animation: colorChange 1s linear infinite;
+}
+.date {
+  margin: 0.5rem 0;
+  border-radius: 0.5rem;
+  width: 45%;
+  height: 1.75rem;
+  animation: colorChange 1s linear infinite;
+}
+.title {
+  margin: 0.75rem auto;
+  height: 3.2rem;
+  width: 100%;
+  border-radius: 0.5rem;
+  animation: colorChange 1s linear infinite;
+}
+
+.distance {
+  margin: 1rem auto;
+  border-radius: 0.5rem;
+  height: 1.75rem;
+  width: 100%;
+  animation: colorChange 1s linear infinite;
+}
+
+.moreInfo {
   display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-}
-.fixed {
-  margin: auto;
-}
-.words {
-  margin: auto;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  height: 3rem;
+  text-emphasis-position: bottom;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+  width: 100%;
 }
 
-.word {
-  display: block;
-  line-height: 3rem;
-  padding-left: 6px;
-  color: $Highlight_2;
-  animation: text_spin 4s infinite;
-
-  @media screen and (max-width: 460px) {
-    text-align: center;
-  }
+.local {
+  height: 2rem;
+  width: 60%;
+  border-radius: 0.5rem;
+  animation: colorChange 1s linear infinite;
 }
 
-@keyframes text_spin {
-  10% {
-    -webkit-transform: translateY(-105%);
-    transform: translateY(-105%);
-  }
+.priceTag {
+  width: 30%;
+  height: 2rem;
+  border-radius: 0.5rem;
+  animation: colorChange 1s linear infinite;
+}
 
-  25% {
-    -webkit-transform: translateY(-100%);
-    transform: translateY(-100%);
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
   }
-
-  35% {
-    -webkit-transform: translateY(-205%);
-    transform: translateY(-205%);
-  }
-
-  50% {
-    -webkit-transform: translateY(-200%);
-    transform: translateY(-200%);
-  }
-
-  60% {
-    -webkit-transform: translateY(-305%);
-    transform: translateY(-305%);
-  }
-
-  75% {
-    -webkit-transform: translateY(-300%);
-    transform: translateY(-300%);
-  }
-
-  85% {
-    -webkit-transform: translateY(-405%);
-    transform: translateY(-405%);
-  }
-
   100% {
-    -webkit-transform: translateY(-400%);
-    transform: translateY(-400%);
+    background-position: -200% 50%;
+  }
+}
+
+@keyframes colorChange {
+  0% {
+    background-color: #a7a7a7;
+  }
+  50% {
+    background-color: #999999;
+  }
+  100% {
+    background-color: #a7a7a7;
   }
 }

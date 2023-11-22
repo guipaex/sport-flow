@@ -2,15 +2,16 @@ import style from "./loader.module.scss";
 
 export default function Loader() {
   return (
-    <div className={style.loader}>
-      <p className={style.fixed}>Carregando</p>
-      <div className={style.words}>
-        <span className={style.word}>corridas</span>
-        <span className={style.word}>distâncias</span>
-        <span className={style.word}>datas</span>
-        <span className={style.word}>valores</span>
-        <span className={style.word}>corridas</span>
-      </div>
+    <div className={style.raceCard}>
+      <div className={style.sport}></div>
+      <div className={style.eventThumb} />
+      <div className={style.date} />
+      <div className={style.title} />
+      <div className={style.distance} />
+      <span className={style.moreInfo}>
+        <p className={style.local}></p>
+        <p className={style.priceTag}></p>
+      </span>
     </div>
   );
 }
