@@ -2,7 +2,11 @@
 
 .container {
   max-width: $desktop-max;
+  height: 100vh;
   margin: auto;
+  padding: clamp(1rem, 5vw, 2.5rem);
+  margin-top: $HeaderHeight;
+  color: $DarkGreen;
 }
 .banner {
   margin: 1rem auto;
@@ -11,4 +15,17 @@
   border-radius: 1rem;
   object-fit: cover;
   filter: drop-shadow(0 5px 5px rgba(0, 0, 0, 0.25));
+}
+
+.title {
+  text-transform: uppercase;
+  font-style: italic;
+  text-align: center;
+  font-weight: 900;
+  font-size: clamp(1.5rem, 5vw, 3rem);
+  margin: auto;
+  padding: clamp(2rem, 5vw, 3.5rem);
+  border-radius: 2rem;
+  color: $LightGreen;
+  background-color: $DarkGreen;
 }
