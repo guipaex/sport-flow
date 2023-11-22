@@ -12,23 +12,18 @@
   color: black;
 }
 .sport {
-  text-align: right;
-  font-family: "Rubik", sans-serif;
-  font-weight: 600;
-  font-size: 1rem;
-  text-transform: uppercase;
   background-color: $White_2;
-  border-radius: 20%;
+  padding: 0.3rem;
+  padding-left: 0.5rem;
   position: absolute;
-  right: 0;
-  top: 0;
+  right: 0.5rem;
+  top: 1rem;
   z-index: 10;
   border-radius: 0 0 0 1.3rem;
 
   &__icon {
-    width: 3rem;
-    height: 2.25rem;
-    margin: 0.5rem;
+    width: 2rem;
+    height: 2rem;
   }
 }
 
