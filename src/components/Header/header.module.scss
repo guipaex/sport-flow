@@ -30,22 +30,29 @@
   border-radius: 0.75rem;
   display: none;
 }
+
 .menu {
   display: flex;
   gap: 1rem;
   align-items: center;
+  justify-content: center;
   z-index: 1;
-  & ul {
-    list-style: none;
+  &__loginBtn {
+    border-radius: 0.5rem;
+    border: none;
+    background-color: $LightGreen;
+    cursor: pointer;
+    padding: 0.5rem 1rem;
+    font-weight: 600;
   }
   &__item {
-    color: white;
-    text-decoration: none;
     padding: 0.3rem 0.5rem;
-    font-weight: 400;
-    line-height: 1rem;
-    cursor: pointer;
+    color: $White_2;
+    text-decoration: none;
     position: relative;
+    font-weight: 400;
+    height: 2rem;
+    top: 0.3rem;
     &:hover::after {
       width: 100%;
       left: 0;
@@ -66,7 +73,8 @@
   &__links {
     display: flex;
     gap: 1rem;
-
+    list-style: none;
+    height: 2rem;
     @media (max-width: $mobile) {
       position: absolute;
       top: 0;

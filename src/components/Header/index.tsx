@@ -1,22 +1,25 @@
-import React from "react";
+import React, { useContext } from "react";
 import style from "./header.module.scss";
 import logo from "../../assets/svg/logo_light.svg";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import classNames from "classnames";
 import { PiListBold, PiXBold } from "react-icons/pi";
+import { AuthGoogleContext } from "../../contexts/authGoogle";
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
+  const { signInGoogle, signed, user } = useContext<any>(AuthGoogleContext);
 
   useEffect(() => {
+    console.log(signed);
     if (isOpen) {
-      document.body.style.overflow = "hidden"; // Bloqueia o scroll
+      document.body.style.overflow = "hidden";
     } else {
-      document.body.style.overflow = "auto"; // Restaura o scroll
+      document.body.style.overflow = "auto";
     }
     return () => {
-      document.body.style.overflow = "auto"; // Certifique-se de restaurar o scroll ao desmontar o componente
+      document.body.style.overflow = "auto";
     };
   }, [isOpen]);
 
@@ -47,6 +50,17 @@ export default function Header() {
               Contato
             </Link>
           </li>
+          {!signed ? (
+            <button className={style.menu__loginBtn} onClick={signInGoogle}>
+              Entrar
+            </button>
+          ) : (
+            <li>
+              <Link to={`/perfil/${user.uid}`} className={style.menu__item} onClick={() => setIsOpen(!isOpen)}>
+                Seu Perfil
+              </Link>
+            </li>
+          )}
         </ul>
       </nav>
     </header>

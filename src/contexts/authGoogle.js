@@ -12,10 +12,10 @@ export const AuthGoogleProvider = ({ children }) => {
   const [signed, setSigned] = useState(false)
 
   useEffect(() => {
-    loadStoreAuth()
+    loadAuthData()
     ;},[])
 
-  function loadStoreAuth(){
+  function loadAuthData(){
     const sessionToken = sessionStorage.getItem("@AuthFirebase:token");
     const sessionUser = sessionStorage.getItem("@AuthFirebase:user");
     if(sessionToken && sessionUser){
@@ -32,6 +32,7 @@ export const AuthGoogleProvider = ({ children }) => {
         const user = result.user;
         sessionStorage.setItem("@AuthFirebase:token", token);
         sessionStorage.setItem("@AuthFirebase:user", JSON.stringify(user))
+        window.location.reload();
       })
       .catch((error) => {
         const errorCode = error.code;
