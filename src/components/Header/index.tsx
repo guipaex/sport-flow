@@ -32,7 +32,7 @@ export default function Header() {
     return () => {
       document.body.style.overflow = "auto";
     };
-  }, [isOpen, signed, user.uid]);
+  }, [isOpen, signed]);
 
   return (
     <header className={style.header}>
