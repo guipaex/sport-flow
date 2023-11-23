@@ -6,13 +6,24 @@ import { Link } from "react-router-dom";
 import classNames from "classnames";
 import { PiListBold, PiXBold } from "react-icons/pi";
 import { AuthGoogleContext } from "../../contexts/authGoogle";
+import { db } from "../../services/firebase";
+import { doc, getDoc } from "firebase/firestore";
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
+  const [username, setUserName] = useState("");
   const { signInGoogle, signed, user } = useContext<any>(AuthGoogleContext);
 
+  async function getUserName(uid) {
+    const userData = await getDoc(doc(db, "users", uid));
+    const data = userData.data();
+    setUserName(data.username);
+  }
+
   useEffect(() => {
-    console.log(signed);
+    if (signed) {
+      getUserName(user.uid);
+    }
     if (isOpen) {
       document.body.style.overflow = "hidden";
     } else {
@@ -56,7 +67,7 @@ export default function Header() {
             </button>
           ) : (
             <li>
-              <Link to={`/perfil/${user.uid}`} className={style.menu__item} onClick={() => setIsOpen(!isOpen)}>
+              <Link to={`/perfil/${username}`} className={style.menu__item} onClick={() => setIsOpen(!isOpen)}>
                 Seu Perfil
               </Link>
             </li>

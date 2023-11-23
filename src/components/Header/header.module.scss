@@ -5,9 +5,10 @@
   top: 0;
   left: 0;
   right: 0;
-  max-width: $desktop-max;
   height: 5rem;
-  padding: 1.5rem 3rem;
+  padding: 1rem;
+  padding-left: clamp(1rem, 8vw, 15rem);
+  padding-right: clamp(1rem, 8vw, 15rem);
   margin: auto;
   display: flex;
   align-items: center;
