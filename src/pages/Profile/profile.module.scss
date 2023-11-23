@@ -13,6 +13,7 @@
 .banner {
   margin: auto;
   width: 90vw;
+  max-width: $desktop-max;
   max-height: 420px;
   border-radius: 1rem;
   object-fit: cover;

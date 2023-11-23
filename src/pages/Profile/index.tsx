@@ -6,7 +6,6 @@ import { db } from "../../services/firebase";
 import { doc, getDoc } from "firebase/firestore";
 
 export default function Profile() {
-  // const { user } = useContext<any>(AuthGoogleContext);
   const { uid } = useParams();
   const [user, setUser] = useState<any>({});
 
@@ -20,14 +19,19 @@ export default function Profile() {
   }, []);
 
   if (!user) {
-    return <h1>Algo deu errado</h1>;
+    return (
+      <main className={style.container}>
+        <h1>Precisamos de mais alguns dados para criar seu perfil</h1>
+        <Link to={`${user}/cadastro-perfil`}>Completar Cadastro</Link>
+      </main>
+    );
   } else {
     return (
       <main className={style.container}>
         <img className={style.banner} src={user.profileBanner} alt='' />
         <img className={style.profilePic} src={user.photoURL} alt='' />
         <h2 className={style.name}>{user.fullName}</h2>
-        <p>{`${user.age} | ${user.location?.city} - ${user.location?.state}`}</p>
+        <p>{`${user.age} anos | ${user.location?.city} - ${user.location?.state}`}</p>
         <section className={style.contentColumns}>
           <section className={style.records}>
             <h4>Recordes:</h4>
