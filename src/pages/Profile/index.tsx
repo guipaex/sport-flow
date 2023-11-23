@@ -1,18 +1,20 @@
 import { Link, useParams } from "react-router-dom";
 import style from "./profile.module.scss";
-import { AuthGoogleContext } from "../../contexts/authGoogle";
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { db } from "../../services/firebase";
-import { doc, getDoc } from "firebase/firestore";
+import { query, collection, where, doc, getDocs } from "firebase/firestore";
 
 export default function Profile() {
-  const { uid } = useParams();
+  const { username } = useParams();
   const [user, setUser] = useState<any>({});
 
+  const ref = query(collection(db, "users"), where("username", "==", username));
+
   async function getUserData() {
-    const userData = await getDoc(doc(db, "users", uid));
-    const data = userData.data();
-    setUser(data);
+    const data = await getDocs(ref);
+    return data.forEach((doc) => {
+      setUser(doc.data());
+    });
   }
   useEffect(() => {
     getUserData();
@@ -28,10 +30,14 @@ export default function Profile() {
   } else {
     return (
       <main className={style.container}>
-        <img className={style.banner} src={user.profileBanner} alt='' />
-        <img className={style.profilePic} src={user.photoURL} alt='' />
-        <h2 className={style.name}>{user.fullName}</h2>
-        <p>{`${user.age} anos | ${user.location?.city} - ${user.location?.state}`}</p>
+        <section className={style.intro}>
+          <img className={style.intro__banner} src={user.profileBanner} alt='' />
+          <img className={style.intro__photo} src={user.photoURL} alt='' />
+          <span className={style.intro__text}>
+            <h2 className={style.name}>{user.fullName}</h2>
+            <p>{`${user.age} anos | ${user.location?.city} - ${user.location?.state}`}</p>
+          </span>
+        </section>
         <section className={style.contentColumns}>
           <section className={style.records}>
             <h4>Recordes:</h4>
