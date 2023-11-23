@@ -24,4 +24,4 @@ yarn-error.log*
 populateDatabase.js
 scrappedDB.json
 data/
-public/index.html
+/public
