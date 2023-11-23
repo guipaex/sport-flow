@@ -17,7 +17,9 @@ export default function Header() {
   async function getUserName(uid) {
     const userData = await getDoc(doc(db, "users", uid));
     const data = userData.data();
-    setUserName(data.username);
+    if (data) {
+      setUserName(data.username);
+    }
   }
 
   useEffect(() => {
@@ -32,7 +34,7 @@ export default function Header() {
     return () => {
       document.body.style.overflow = "auto";
     };
-  }, [isOpen, signed]);
+  }, [isOpen]);
 
   return (
     <header className={style.header}>
