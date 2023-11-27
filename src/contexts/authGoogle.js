@@ -20,11 +20,10 @@ export const AuthGoogleProvider = ({ children }) => {
     async function loadAuthData(){
       const sessionToken = sessionStorage.getItem("@AuthFirebase:token");
       const sessionUser = sessionStorage.getItem("@AuthFirebase:user");
-      const user = JSON.parse(sessionUser);
+      const user = sessionUser;
       if(sessionToken && sessionUser){
-        const username = await getUserName(user.uid)
+        const username = await getUserName(user)
         setSigned(true)
-        setUser(JSON.parse(sessionUser))
         setUserName(username)
         
       }
@@ -46,7 +45,7 @@ export const AuthGoogleProvider = ({ children }) => {
         const token = credential.accessToken;
         const user = result.user;
         sessionStorage.setItem("@AuthFirebase:token", token);
-        sessionStorage.setItem("@AuthFirebase:user", JSON.stringify(user))
+        sessionStorage.setItem("@AuthFirebase:user", user.uid)
         window.location.reload();
       })
       .catch((error) => {
@@ -57,7 +56,7 @@ export const AuthGoogleProvider = ({ children }) => {
       });
   };
   return(
-    <AuthGoogleContext.Provider value={{signInGoogle, signed, username, user, username}}>{children}</AuthGoogleContext.Provider>
+    <AuthGoogleContext.Provider value={{signInGoogle, signed, username, user}}>{children}</AuthGoogleContext.Provider>
 
   );
 };
