@@ -1,29 +1,42 @@
 import {useState, useEffect, createContext} from 'react';
 import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import { app } from "../services/firebase";
+import { db } from "../services/firebase";
+import { query, collection, where, doc, getDocs,getDoc  } from "firebase/firestore";
 
 const provider = new GoogleAuthProvider();
-
 export const AuthGoogleContext = createContext({});
 
 export const AuthGoogleProvider = ({ children }) => {
   const auth = getAuth(app);
   const [user, setUser] = useState(null)
   const [signed, setSigned] = useState(false)
-
+  const [username, setUserName] = useState("");
+  
   useEffect(() => {
     loadAuthData()
     ;},[])
-
-  function loadAuthData(){
-    const sessionToken = sessionStorage.getItem("@AuthFirebase:token");
-    const sessionUser = sessionStorage.getItem("@AuthFirebase:user");
-    if(sessionToken && sessionUser){
-      setSigned(true)
-      setUser(JSON.parse(sessionUser))
-    }
+    
+    async function loadAuthData(){
+      const sessionToken = sessionStorage.getItem("@AuthFirebase:token");
+      const sessionUser = sessionStorage.getItem("@AuthFirebase:user");
+      const user = JSON.parse(sessionUser);
+      if(sessionToken && sessionUser){
+        const username = await getUserName(user.uid)
+        setSigned(true)
+        setUser(JSON.parse(sessionUser))
+        setUserName(username)
+        
+      }
+    
   }
-
+  async function getUserName(uid){
+      const userData = await getDoc(doc(db, "users", uid));
+      const data = userData.data();
+      if (data) {
+        return data.username;
+      }
+  }
 	const signInGoogle = () => {
     signInWithPopup(auth, provider)
       .then((result) => {
@@ -42,7 +55,7 @@ export const AuthGoogleProvider = ({ children }) => {
       });
   };
   return(
-    <AuthGoogleContext.Provider value={{signInGoogle, signed, user }}>{children}</AuthGoogleContext.Provider>
+    <AuthGoogleContext.Provider value={{signInGoogle, signed, username, user, username}}>{children}</AuthGoogleContext.Provider>
 
   );
 };
