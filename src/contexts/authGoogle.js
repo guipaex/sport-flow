@@ -33,8 +33,10 @@ export const AuthGoogleProvider = ({ children }) => {
   async function getUserName(uid){
       const userData = await getDoc(doc(db, "users", uid));
       const data = userData.data();
-      if (data) {
+      if (data && data.username) {
         return data.username;
+      } else {
+        return uid
       }
   }
 	const signInGoogle = () => {
