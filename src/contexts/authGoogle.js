@@ -2,14 +2,13 @@ import {useState, useEffect, createContext} from 'react';
 import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import { app } from "../services/firebase";
 import { db } from "../services/firebase";
-import { query, collection, where, doc, getDocs,getDoc  } from "firebase/firestore";
+import { doc, getDoc  } from "firebase/firestore";
 
 const provider = new GoogleAuthProvider();
 export const AuthGoogleContext = createContext({});
 
 export const AuthGoogleProvider = ({ children }) => {
   const auth = getAuth(app);
-  const [user, setUser] = useState(null)
   const [signed, setSigned] = useState(false)
   const [username, setUserName] = useState("");
   
@@ -56,7 +55,7 @@ export const AuthGoogleProvider = ({ children }) => {
       });
   };
   return(
-    <AuthGoogleContext.Provider value={{signInGoogle, signed, username, user}}>{children}</AuthGoogleContext.Provider>
+    <AuthGoogleContext.Provider value={{signInGoogle, signed, username}}>{children}</AuthGoogleContext.Provider>
 
   );
 };
