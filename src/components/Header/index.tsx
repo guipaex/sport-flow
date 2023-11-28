@@ -9,7 +9,7 @@ import { AuthGoogleContext } from "../../contexts/authGoogle";
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
-  const { signInGoogle, signed, user, username } = useContext<any>(AuthGoogleContext);
+  const { signed, user } = useContext<any>(AuthGoogleContext);
 
   useEffect(() => {
     if (isOpen) {
@@ -50,12 +50,12 @@ export default function Header() {
             </Link>
           </li>
           {!signed ? (
-            <button className={style.menu__loginBtn} onClick={signInGoogle}>
+            <Link to={"/login"} className={style.menu__btn} onClick={() => setIsOpen(!isOpen)}>
               Entrar
-            </button>
+            </Link>
           ) : (
             <li>
-              <Link to={`/${username}`} className={style.menu__item} onClick={() => setIsOpen(!isOpen)}>
+              <Link to={`/${user}`} className={style.menu__item} onClick={() => setIsOpen(!isOpen)}>
                 Seu Perfil
               </Link>
             </li>
