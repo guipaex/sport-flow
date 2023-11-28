@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import style from "./styles.module.scss";
-import RaceForm from "../../components/RaceForm";
+import RaceForm from "../../components/Form/RaceRegister";
 import { AuthGoogleContext } from "../../contexts/authGoogle";
 
 export default function RaceRegister() {

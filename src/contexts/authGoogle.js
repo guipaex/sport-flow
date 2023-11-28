@@ -10,7 +10,7 @@ export const AuthGoogleContext = createContext({});
 export const AuthGoogleProvider = ({ children }) => {
   const auth = getAuth(app);
   const [signed, setSigned] = useState(false)
-  const [username, setUserName] = useState("");
+  const [user, setUser] = useState("");
   
   useEffect(() => {
     loadAuthData()
@@ -21,9 +21,9 @@ export const AuthGoogleProvider = ({ children }) => {
       const sessionUser = sessionStorage.getItem("@AuthFirebase:user");
       const user = sessionUser;
       if(sessionToken && sessionUser){
-        const username = await getUserName(user)
+        const userid = await getUserName(user)
         setSigned(true)
-        setUserName(username)
+        setUser(userid)
         
       }
     
@@ -38,6 +38,7 @@ export const AuthGoogleProvider = ({ children }) => {
       }
   }
 	const signInGoogle = () => {
+    console.log('chamou')
     signInWithPopup(auth, provider)
       .then((result) => {
         const credential = GoogleAuthProvider.credentialFromResult(result);
@@ -55,7 +56,7 @@ export const AuthGoogleProvider = ({ children }) => {
       });
   };
   return(
-    <AuthGoogleContext.Provider value={{signInGoogle, signed, username}}>{children}</AuthGoogleContext.Provider>
+    <AuthGoogleContext.Provider value={{signInGoogle, signed, user}}>{children}</AuthGoogleContext.Provider>
 
   );
 };

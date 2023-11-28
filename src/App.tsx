@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import { AuthGoogleProvider } from "./contexts/authGoogle";
@@ -7,11 +7,10 @@ import Header from "./components/Header";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
 import RaceRegister from "./pages/RegisterRace";
-import { AuthGoogleContext } from "./contexts/authGoogle";
 import Profile from "./pages/Profile";
+import Login from "./pages/Login";
 
 function App() {
-  const { signed, user } = useContext<any>(AuthGoogleContext);
   return (
     <>
       <Router>
@@ -22,7 +21,8 @@ function App() {
             <Route path='/sobre' element={<About />} />
             <Route path='/contato' element={<Contact />} />
             <Route path='/cadastro-corrida' element={<RaceRegister />} />
-            <Route path='/perfil/:uid' element={<Profile />} />
+            <Route path={`/:username`} element={<Profile />} />
+            <Route path={`/login`} element={<Login />} />
           </Routes>
         </AuthGoogleProvider>
       </Router>

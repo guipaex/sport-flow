@@ -1,0 +1,48 @@
+@import "../../utils/variables.scss";
+
+.container {
+  max-width: $desktop-max;
+  height: 100%;
+  min-height: 100vh;
+  margin: auto;
+  padding: 1rem;
+  padding-left: clamp(1rem, 5vw, 2.5rem);
+  padding-right: clamp(1rem, 5vw, 2.5rem);
+  margin-top: $HeaderHeight;
+  color: $DarkGreen;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  width: 30rem;
+  background-color: white;
+  border-radius: 2rem;
+  margin: 5rem 1rem;
+  padding: 2rem 2.5rem;
+}
+
+.inputGroup {
+  margin: 1em 0 1em 0;
+  max-width: 190px;
+  position: relative;
+  width: 20rem;
+
+  &__label {
+    font-size: 100%;
+    position: absolute;
+    left: 0;
+    padding: 0.8em;
+    margin-left: 0.5em;
+    pointer-events: none;
+    transition: all 0.3s ease;
+    color: rgb(100, 100, 100);
+  }
+  &__input {
+    width: 100%;
+    background-color: burlywood;
+    border: none;
+    border-radius: 2rem;
+    padding: 1rem 2rem;
+  }
+}
