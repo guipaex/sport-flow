@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import style from "./styles.module.scss";
-import RaceForm from "../../components/Form/RaceRegister";
+import RaceForm from "../../components/Form/RaceForm";
 import { AuthGoogleContext } from "../../contexts/authGoogle";
 
 export default function RaceRegister() {
@@ -18,7 +18,7 @@ export default function RaceRegister() {
           />
         </>
       ) : (
-        <RaceForm />
+        <h1>Colocar o Formulario aqui</h1>
       )}
     </section>
   );
