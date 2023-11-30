@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import {useState, useEffect, createContext} from 'react';
 import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import { app } from "../services/firebase";
@@ -24,8 +25,7 @@ export const AuthGoogleProvider = ({ children }) => {
         const userid = await getUserName(user)
         setSigned(true)
         setUser(userid)
-      }
-    
+      }    
   }
   async function getUserName(uid){
       const userData = await getDoc(doc(db, "users", uid));
