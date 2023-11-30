@@ -1,9 +1,7 @@
 import styled from "styled-components";
-import colors from "../../../utils/variables.scss";
 import { useNavigate } from "react-router-dom";
-import { useContext } from "react";
-import { AuthGoogleContext } from "../../../contexts/authGoogle";
 import { FcGoogle } from "react-icons/fc";
+import { UserAuth } from "../../../contexts/Auth";
 
 const FormContainer = styled.form`
   display: flex;
@@ -50,26 +48,28 @@ const GoogleButton = styled.button`
 `;
 
 export default function LoginForm() {
-  const { signInGoogle, signed, user } = useContext<any>(AuthGoogleContext);
-  const navigate = useNavigate();
-  const handleClick = (e) => {
+  const { logIn, user, username } = UserAuth();
+
+  const handleLogIn = async (e) => {
     e.preventDefault();
-    signInGoogle();
+    logIn();
   };
-  if (!signed) {
+  const navigate = useNavigate();
+
+  if (!user) {
     return (
       <FormContainer>
         <FormTitle>Seja bem-vindo(a)!</FormTitle>
         <FormDescription>
           Por enquanto só é possível se cadastrar com o Google, mas em breve mais opções serão disponibilizadas
         </FormDescription>
-        <GoogleButton onClick={handleClick}>
+        <GoogleButton onClick={handleLogIn}>
           <FcGoogle className='icon' />
           Entrar com Google
         </GoogleButton>
       </FormContainer>
     );
   } else {
-    navigate(`/${user}`);
+    navigate(`/${username}`);
   }
 }
