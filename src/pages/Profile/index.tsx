@@ -30,7 +30,7 @@ export default function Profile() {
 
   useEffect(() => {
     getUserData(username);
-  }, [user]);
+  }, [user, username]);
 
   if (status === "404") {
     return (

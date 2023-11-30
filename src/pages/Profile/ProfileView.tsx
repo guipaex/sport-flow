@@ -8,7 +8,6 @@ interface Props {
 
 export default function ProfileView({ data }: Props) {
   const user = data;
-  console.log(user);
   return (
     <main className={style.container}>
       <section className={style.intro}>
