@@ -1,18 +1,18 @@
 export default interface userData {
-	id: string;
-  name: string;
-	lastName: string;
+	id?: string;
+  name?: string;
+	lastName?: string;
 	displayName?: string;
-	username: string;
-	email: string;
-	age: number;
-	birth: Date;
-	images: iIMGURL;
-	local: iLocation;
-	role: string;
-	records: iRecords;
-	friends: Array<iFriendList>
-	events: Array<iEventList>
+	username?: string;
+	email?: string;
+	age?: number;
+	birth?: Date;
+	images?: iIMGURL;
+	local?: iLocation;
+	role?: string;
+	records?: iRecords;
+	friends?: Array<iFriendList>
+	events?: Array<iEventList>
 }
 
 interface iIMGURL {
