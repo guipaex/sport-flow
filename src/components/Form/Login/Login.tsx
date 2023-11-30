@@ -70,6 +70,6 @@ export default function LoginForm() {
       </FormContainer>
     );
   } else {
-    navigate(`/${username}`);
+    navigate(`/`);
   }
 }

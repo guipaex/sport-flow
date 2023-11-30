@@ -18,7 +18,6 @@ export const AuthContextProvider = ({children}) => {
 		signOut(auth)
 	}
 	useEffect (() => {
-		console.log('entrou')
 		const logout = onAuthStateChanged(auth, async (currentUser) => {
 			setUser(currentUser)
 			if(currentUser){
@@ -34,7 +33,6 @@ export const AuthContextProvider = ({children}) => {
 async function getUserName(user){
 	const userData = await getDoc(doc(db, "users", user.uid));
 	const data = userData.data();
-	console.log(data)
 		if (data && data.username) {
 			setUsername(data.username)
 			 ;

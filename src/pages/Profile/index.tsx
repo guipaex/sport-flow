@@ -28,6 +28,7 @@ export default function Profile() {
   }
 
   useEffect(() => {
+    console.log(user, username);
     getUserData(username);
   }, [user, username]);
 

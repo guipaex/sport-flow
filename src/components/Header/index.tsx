@@ -1,27 +1,17 @@
-import React, { useContext } from "react";
+import React from "react";
 import style from "./header.module.scss";
 import logo from "../../assets/svg/logo_light.svg";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import classNames from "classnames";
 import { PiListBold, PiXBold } from "react-icons/pi";
-import { AuthGoogleContext } from "../../contexts/authGoogle";
+import { UserAuth } from "../../contexts/Auth";
+import ProfileMenu from "../ProfileMenu";
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
-  const { signed, user } = useContext<any>(AuthGoogleContext);
 
-  useEffect(() => {
-    if (isOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "auto";
-    }
-    return () => {
-      document.body.style.overflow = "auto";
-    };
-  }, [isOpen]);
-
+  const { user, logOut } = UserAuth();
   return (
     <header className={style.header}>
       <Link to='/' onClick={() => setIsOpen(false)} className={style.logo}>
@@ -49,16 +39,12 @@ export default function Header() {
               Contato
             </Link>
           </li>
-          {!signed ? (
+          {!user ? (
             <Link to={"/login"} className={style.menu__btn} onClick={() => setIsOpen(!isOpen)}>
               Entrar
             </Link>
           ) : (
-            <li>
-              <Link to={`/${user}`} className={style.menu__item} onClick={() => setIsOpen(!isOpen)}>
-                Seu Perfil
-              </Link>
-            </li>
+            <ProfileMenu />
           )}
         </ul>
       </nav>
