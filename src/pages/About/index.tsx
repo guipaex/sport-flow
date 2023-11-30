@@ -1,6 +1,4 @@
-import { useState } from "react";
 import { GrInstagram } from "react-icons/gr";
-import { ContactValues } from "../../utils/interfaces";
 import style from "./about.module.scss";
 
 export default function About() {

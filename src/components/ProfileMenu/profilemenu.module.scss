@@ -1,0 +1,53 @@
+@import "../../utils/variables.scss";
+
+.menu {
+  position: relative;
+  top: -0.5rem;
+  height: 3rem;
+  width: 14rem;
+  border: 1px solid rgba($LightGreen, 0.2);
+  border-radius: 1.5rem;
+  padding: 0.5rem;
+  line-height: 0;
+  background-color: rgba($LightGreen, 0.05);
+  transition: 300ms;
+}
+.profile {
+  transition: 300ms;
+  position: absolute;
+  width: 11rem;
+  top: 0.45rem;
+  left: -1.75rem;
+  right: 0;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  text-decoration: none;
+  &__name {
+    color: $White_2;
+    line-height: 0;
+    text-align: center;
+    margin: auto;
+  }
+  &__picture {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 100%;
+    border: 1px solid $LightGreen;
+  }
+}
+.logout {
+  cursor: pointer;
+  position: absolute;
+  right: 0.7rem;
+  top: 0.8rem;
+  background-color: transparent;
+  border: none;
+  color: $White_2;
+  margin-left: 1rem;
+  &__icon {
+    width: 1.2rem;
+    height: auto;
+  }
+}

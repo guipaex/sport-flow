@@ -1,15 +1,14 @@
-import { useContext } from "react";
 import style from "./styles.module.scss";
-import RaceForm from "../../components/RaceForm";
-import { AuthGoogleContext } from "../../contexts/authGoogle";
+import RaceForm from "../../components/Form/RaceForm";
+import { UserAuth } from "../../contexts/Auth";
 
 export default function RaceRegister() {
-  const { signed }: any = useContext(AuthGoogleContext);
+  const { user } = UserAuth();
 
   return (
     <section className={style.container}>
       <h1>CADASTRO DE EVENTO</h1>
-      {!signed ? (
+      {!user ? (
         <>
           <h2>Área restrita para usuários cadastrados</h2>;
           <img
@@ -18,7 +17,7 @@ export default function RaceRegister() {
           />
         </>
       ) : (
-        <RaceForm />
+        <h1>Colocar o Formulario aqui</h1>
       )}
     </section>
   );

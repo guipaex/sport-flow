@@ -5,21 +5,13 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import classNames from "classnames";
 import { PiListBold, PiXBold } from "react-icons/pi";
+import { UserAuth } from "../../contexts/Auth";
+import ProfileMenu from "../ProfileMenu";
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
 
-  useEffect(() => {
-    if (isOpen) {
-      document.body.style.overflow = "hidden"; // Bloqueia o scroll
-    } else {
-      document.body.style.overflow = "auto"; // Restaura o scroll
-    }
-    return () => {
-      document.body.style.overflow = "auto"; // Certifique-se de restaurar o scroll ao desmontar o componente
-    };
-  }, [isOpen]);
-
+  const { user, logOut } = UserAuth();
   return (
     <header className={style.header}>
       <Link to='/' onClick={() => setIsOpen(false)} className={style.logo}>
@@ -47,6 +39,13 @@ export default function Header() {
               Contato
             </Link>
           </li>
+          {!user ? (
+            <Link to={"/login"} className={style.menu__btn} onClick={() => setIsOpen(!isOpen)}>
+              Entrar
+            </Link>
+          ) : (
+            <ProfileMenu />
+          )}
         </ul>
       </nav>
     </header>

@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import style from "./styles.module.scss";
-import { db } from "../../services/firebase";
+import { db } from "../../../services/firebase";
 import { doc, setDoc } from "firebase/firestore";
 import { v4 as uuidv4 } from "uuid";
-import { RaceData, Months } from "../../utils/interfaces";
+import { RaceData, Months } from "../../../utils/interfaces/interfaces";
 
 function RaceForm() {
   const [formData, setFormData] = useState({

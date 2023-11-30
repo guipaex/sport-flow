@@ -1,0 +1,123 @@
+@import "../../utils/variables.scss";
+
+.container {
+  max-width: $desktop-max;
+  height: 100%;
+  min-height: 100vh;
+  margin: auto;
+  padding: 1rem;
+  padding-left: clamp(1rem, 5vw, 2.5rem);
+  padding-right: clamp(1rem, 5vw, 2.5rem);
+  margin-top: $HeaderHeight;
+  color: $DarkGreen;
+  text-align: center;
+}
+.intro {
+  height: fit-content;
+  margin-bottom: $HeaderHeight;
+  &__banner {
+    margin: auto;
+    width: 92vw;
+    max-width: $desktop-max;
+    height: 260px;
+    border-radius: 1rem;
+    object-fit: cover;
+    position: absolute;
+    left: 0;
+    right: 0;
+    z-index: -1;
+  }
+  &__photo {
+    width: 15rem;
+    position: relative;
+    top: 2rem;
+    aspect-ratio: 1/1;
+    border: 5px solid $White;
+    border-radius: 100%;
+    object-fit: cover;
+    filter: drop-shadow(0 5px 5px rgba(0, 0, 0, 0.25));
+  }
+  &__text {
+    position: relative;
+    top: 2rem;
+    .name {
+      font-weight: 900;
+      font-size: clamp(2rem, 8vw, 3rem);
+      color: $DarkGreen;
+    }
+  }
+}
+
+.contentColumns {
+  position: relative;
+  display: flex;
+  gap: 1rem;
+  margin: 2rem auto;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.records {
+  min-width: 16rem;
+  width: fit-content;
+  height: fit-content;
+  background-color: $White_2;
+  padding: 1.5rem 1rem;
+  border-radius: 1rem;
+  filter: drop-shadow(0 5px 5px rgba(0, 0, 0, 0.25));
+  & h4 {
+    text-transform: uppercase;
+  }
+  & p {
+    background-color: $White;
+    margin-top: 0.5rem;
+    border-radius: 0.25rem;
+  }
+}
+.friendlist {
+  min-width: 16rem;
+  width: fit-content;
+  height: fit-content;
+  background-color: $White_2;
+  padding: 1.5rem 1rem;
+  border-radius: 1rem;
+  filter: drop-shadow(0 5px 5px rgba(0, 0, 0, 0.25));
+  & h4 {
+    text-transform: uppercase;
+  }
+  & p {
+    background-color: $White;
+    margin-top: 0.5rem;
+    border-radius: 0.25rem;
+  }
+}
+
+.racesHistory {
+  min-width: 16rem;
+  width: fit-content;
+  height: fit-content;
+  background-color: $White_2;
+  padding: 1.5rem 1rem;
+  border-radius: 1rem;
+  filter: drop-shadow(0 5px 5px rgba(0, 0, 0, 0.25));
+  & h4 {
+    text-transform: uppercase;
+  }
+  & p {
+    background-color: $White;
+    margin-top: 0.5rem;
+    border-radius: 0.25rem;
+  }
+}
+
+.btn {
+  color: $White_2;
+  text-decoration: none;
+  background-color: $DarkGreen;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  transition: 300ms;
+  &:hover {
+    color: $LightGreen;
+    padding: 0.6rem 1.2rem;
+  }
+}
