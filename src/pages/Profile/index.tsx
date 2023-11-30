@@ -1,16 +1,15 @@
-import { useParams } from "react-router-dom";
-import style from "./profile.module.scss";
 import React, { useEffect, useState, useContext } from "react";
-import { AuthGoogleContext } from "../../contexts/authGoogle";
+import style from "./profile.module.scss";
+import { useParams } from "react-router-dom";
 import { db } from "../../services/firebase";
-import { doc, getDoc } from "firebase/firestore";
 import { query, collection, where, getDocs } from "firebase/firestore";
 import userData from "../../utils/interfaces/userData";
 import ProfileView from "./ProfileView";
 import UserProfile from "./ProfilePanel";
+import { UserAuth } from "../../contexts/Auth";
 
 export default function Profile() {
-  const { user } = useContext<any>(AuthGoogleContext);
+  const { user } = UserAuth();
   const { username } = useParams();
   const [userData, setUserData] = useState<userData>();
   const [status, setStatus] = useState<string>("Loading...");
