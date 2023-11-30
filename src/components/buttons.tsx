@@ -12,4 +12,11 @@ const LoginGoogle = styled.button`
   margin: 1rem;
   cursor: pointer;
 `;
-export { LoginGoogle };
+
+const GooogleButton = (
+  <LoginGoogle>
+    <FcGoogle />
+  </LoginGoogle>
+);
+
+export { GooogleButton };
