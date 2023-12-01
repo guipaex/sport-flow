@@ -1,5 +1,4 @@
 import { GoogleAuthProvider, signInWithPopup, signOut, onAuthStateChanged} from 'firebase/auth';
-import { doc, getDoc } from "firebase/firestore";
 import { auth } from '../services/firebase';
 import { useContext, createContext, useEffect, useState } from 'react';
 import { getUserData} from '../services/userServices';
