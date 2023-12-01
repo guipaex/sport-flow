@@ -1,6 +1,6 @@
 import userData from "../utils/interfaces/userData";
-import { doc, setDoc } from "firebase/firestore";
-import { db } from "../services/firebase";
+import { doc, setDoc, getDoc } from "firebase/firestore";
+import { db } from "./firebase";
 
 // const data:any = {
 // 	apiKey : "AIzaSyB8jJ2yCSvqHeV6PfwhbeXRgxniO6KqbZA",
@@ -18,7 +18,7 @@ import { db } from "../services/firebase";
 // }
 const defaultBanner = 'https://firebasestorage.googleapis.com/v0/b/streetrun-d889c.appspot.com/o/users%2Fdefault_banner.jpg?alt=media&token=7ed542b2-5d9b-4dc3-b7c4-d2e6ee981a87';
 
-export default async function createUser(data:any) {
+export async function createUser(data:any) {
 	const newUser:userData = {
 		id: data.uid,
 		name: splitName(data.displayName)[0],
@@ -57,3 +57,13 @@ function splitName(name) {
 	const splitted = name.split(" ");
 	return splitted;
 }
+
+export async function getUserData(id){
+	const userData = await getDoc(doc(db, "users", id));
+	const data = userData.data();
+	if ( data ) {
+			return data
+		} else{
+			return await createUser(data)
+		}
+	}

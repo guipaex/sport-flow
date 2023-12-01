@@ -1,14 +1,14 @@
 import { GoogleAuthProvider, signInWithPopup, signOut, onAuthStateChanged} from 'firebase/auth';
 import { doc, getDoc } from "firebase/firestore";
-import { db, auth } from '../services/firebase';
+import { auth } from '../services/firebase';
 import { useContext, createContext, useEffect, useState } from 'react';
-import createUser from '../services/createUser';
+import { getUserData} from '../services/userServices';
 
 const AuthContext = createContext();
 
 export const AuthContextProvider = ({children}) => {
 	const [user, setUser] = useState({});
-	const [username, setUsername] = useState();
+	const [userURL, setUserURL] = useState();
 
 	const logIn = () => {
 		const provider = new GoogleAuthProvider();
@@ -16,34 +16,24 @@ export const AuthContextProvider = ({children}) => {
 	}
 	const logOut = () => {
 		signOut(auth)
+		console.log('Deslogado')
 	}
 	useEffect (() => {
-		const logout = onAuthStateChanged(auth, async (currentUser) => {
-			setUser(currentUser)
+		const handleUser = onAuthStateChanged(auth, async (currentUser) => {
 			if(currentUser){
-				getUserName(currentUser)
+				const userData = await getUserData(currentUser.uid)
+				setUser( await userData)
+				setUserURL(await userData.username)
+			}else{
+				setUser(null)
 			}
 		});
 		return () => {
-			logout()
+			handleUser()
 		}
 	})
-
-
-async function getUserName(user){
-	const userData = await getDoc(doc(db, "users", user.uid));
-	const data = userData.data();
-		if (data && data.username) {
-			setUsername(data.username)
-			 ;
-		} else{
-				createUser(user)
-			return user.uid
-		}
-	}
-
 	return (
-		<AuthContext.Provider value = {{logIn, logOut, user, username}}>
+		<AuthContext.Provider value = {{logIn, logOut, user, userURL}}>
 			{children}
 		</AuthContext.Provider>
 	)
