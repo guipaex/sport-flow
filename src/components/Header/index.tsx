@@ -10,8 +10,7 @@ import ProfileMenu from "../ProfileMenu";
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
-
-  const { user, logOut } = UserAuth();
+  const { user } = UserAuth();
   return (
     <header className={style.header}>
       <Link to='/' onClick={() => setIsOpen(false)} className={style.logo}>
@@ -39,12 +38,12 @@ export default function Header() {
               Contato
             </Link>
           </li>
-          {!user ? (
+          {user ? (
+            <ProfileMenu />
+          ) : (
             <Link to={"/login"} className={style.menu__btn} onClick={() => setIsOpen(!isOpen)}>
               Entrar
             </Link>
-          ) : (
-            <ProfileMenu />
           )}
         </ul>
       </nav>

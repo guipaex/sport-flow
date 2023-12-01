@@ -48,7 +48,7 @@ const GoogleButton = styled.button`
 `;
 
 export default function LoginForm() {
-  const { logIn, user, username } = UserAuth();
+  const { logIn, user, userURL } = UserAuth();
 
   const handleLogIn = async (e) => {
     e.preventDefault();
@@ -70,6 +70,6 @@ export default function LoginForm() {
       </FormContainer>
     );
   } else {
-    navigate(`/`);
+    navigate(`/${userURL}`);
   }
 }
