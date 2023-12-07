@@ -10,6 +10,7 @@ export default function ProfileView({ data }: Props) {
   const user = data;
   return (
     <main className={style.container}>
+      <h1> Perfil de outro usuário</h1>
       <section className={style.intro}>
         <img className={style.intro__banner} src={user?.images?.bannerURL} alt='' />
         <img className={style.intro__photo} src={user?.images?.photoURL} alt='' />

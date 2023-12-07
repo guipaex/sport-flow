@@ -5,11 +5,11 @@ import { MdOutlineLogout } from "react-icons/md";
 import classNames from "classnames";
 
 export default function ProfileMenu() {
-  const { user, logOut, username } = UserAuth();
+  const { user, logOut, userURL } = UserAuth();
 
   return (
     <section className={classNames(style.menu)}>
-      <Link to={`/${username}`} className={style.profile}>
+      <Link to={`/${userURL}`} className={style.profile}>
         <img src={user.photoURL} className={style.profile__picture} />
         <span className={style.profile__name}>{user.displayName}</span>
       </Link>

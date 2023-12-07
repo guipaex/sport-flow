@@ -4,11 +4,11 @@ import { UserAuth } from "../../contexts/Auth";
 
 export default function RaceRegister() {
   const { user } = UserAuth();
-
+  const master = user?.role === "master";
   return (
     <section className={style.container}>
       <h1>CADASTRO DE EVENTO</h1>
-      {!user ? (
+      {!master ? (
         <>
           <h2>Área restrita para usuários cadastrados</h2>;
           <img
@@ -17,7 +17,7 @@ export default function RaceRegister() {
           />
         </>
       ) : (
-        <h1>Colocar o Formulario aqui</h1>
+        <RaceForm />
       )}
     </section>
   );

@@ -8,6 +8,7 @@ import RaceRegister from "./pages/RegisterRace";
 import Profile from "./pages/Profile";
 import Login from "./pages/Login";
 import { AuthContextProvider } from "./contexts/Auth";
+import EventPage from "./pages/Events/EventPage";
 function App() {
   return (
     <>
@@ -20,6 +21,7 @@ function App() {
             <Route path='/contato' element={<Contact />} />
             <Route path='/cadastro-corrida' element={<RaceRegister />} />
             <Route path={`/:username`} element={<Profile />} />
+            <Route path={`/event/:id`} element={<EventPage />} />
             <Route path={`/login`} element={<Login />} />
           </Routes>
         </AuthContextProvider>
