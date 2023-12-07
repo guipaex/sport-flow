@@ -121,3 +121,17 @@
     padding: 0.6rem 1.2rem;
   }
 }
+
+.adm {
+  &__button {
+    background: none;
+    border: none;
+    font-family: "Sora", sans-serif;
+    font-size: 1rem;
+    text-decoration: none;
+    color: $White_2;
+    background-color: $DarkGreen;
+    padding: 1rem;
+    border-radius: 1rem;
+  }
+}

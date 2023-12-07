@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import style from "./styles.module.scss";
+import style from "./RaceForm.module.scss";
 import { db } from "../../../services/firebase";
 import { doc, setDoc } from "firebase/firestore";
 import { v4 as uuidv4 } from "uuid";
@@ -9,13 +9,14 @@ function RaceForm() {
   const [formData, setFormData] = useState({
     eventId: "",
     eventName: "",
+    description: "",
     eventDate: "",
     distances: [],
     start: "",
     city: "",
     state: "",
     thumbURL: "",
-    eventCover: "",
+    bannerURL: "",
     eventPage: "",
     minimumPrice: "",
   });
@@ -32,6 +33,7 @@ function RaceForm() {
       eventId: uuidv4(),
       eventName: formData.eventName,
       eventDate: formatDate(formData.eventDate),
+      description: formData.description,
       distances: formatDistances(formData.distances),
       location: {
         start: formData.start,
@@ -40,7 +42,7 @@ function RaceForm() {
       },
       images: {
         thumbURL: formData.thumbURL,
-        eventCover: formData.eventCover,
+        eventCover: formData.bannerURL,
       },
       eventPage: formData.eventPage,
       minimunPrice: formData.minimumPrice,
@@ -63,7 +65,8 @@ function RaceForm() {
 
   async function uploadRace(data: any) {
     try {
-      await setDoc(doc(db, "races", data.eventId), data);
+      console.log(data);
+      // await setDoc(doc(db, "races", data.eventId), data);
     } catch (e) {
       console.error("Error adding document: ", e);
     }
@@ -137,7 +140,19 @@ function RaceForm() {
         <div className={style.inputGroup}>
           <input type='text' name='thumbURL' value={formData.thumbURL} onChange={handleChange} />
           <label className={style.label} htmlFor='thumbURL'>
-            Link para imagem:
+            Link para miniatura:
+          </label>
+        </div>
+        <div className={style.inputGroup}>
+          <input type='text' name='bannerURL' value={formData.bannerURL} onChange={handleChange} />
+          <label className={style.label} htmlFor='bannerURL'>
+            Link para imagem de Banner:
+          </label>
+        </div>
+        <div className={style.inputGroup}>
+          <textarea name='description' value={formData.description} />
+          <label className={style.label} htmlFor='description'>
+            Descrição do Evento:
           </label>
         </div>
       </fieldset>

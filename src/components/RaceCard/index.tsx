@@ -1,6 +1,7 @@
 import style from "./raceCard.module.scss";
 import { FaRegCalendar } from "react-icons/fa";
 import { PiSneakerMoveBold } from "react-icons/pi";
+import { Link } from "react-router-dom";
 
 export default function RaceCard(raceData: any) {
   const data = raceData.raceData;
@@ -34,9 +35,8 @@ export default function RaceCard(raceData: any) {
       }
     }
   };
-
   return (
-    <a className={style.raceCard} href={data.eventPage}>
+    <Link to={`/event/${data.id}`} className={style.raceCard}>
       <p className={style.sport}>
         <PiSneakerMoveBold className={style.sport__icon} />
       </p>
@@ -60,6 +60,6 @@ export default function RaceCard(raceData: any) {
           A partir de <span className={style.priceTag__value}>{data.minimunPrice}</span>
         </p>
       </span>
-    </a>
+    </Link>
   );
 }

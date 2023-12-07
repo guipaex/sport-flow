@@ -1,6 +1,7 @@
 export interface RaceData {
   eventId: string,
   eventName: string,
+  description: string,
   eventDate: string,
   distances: Array<string>,
   location: {

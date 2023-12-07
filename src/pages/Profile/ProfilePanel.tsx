@@ -4,7 +4,7 @@ import style from "./profile.module.scss";
 
 export default function ProfileView() {
   const { user } = UserAuth();
-  const master = user.role === "master";
+  const master = user?.role === "master";
   return (
     <main className={style.container}>
       <section className={style.intro}>
@@ -15,7 +15,13 @@ export default function ProfileView() {
           <p>{`${user?.age || "Idade"} | ${user?.local?.city || "Cidade"} - ${user?.local?.state || "Estado"}`}</p>
         </span>
       </section>
-      {master && <button>Criar Corrida</button>}
+      <section className={style.adm}>
+        {master && (
+          <Link className={style.adm__button} to={"/cadastro-corrida"}>
+            Criar Corrida
+          </Link>
+        )}
+      </section>
       <section className={style.contentColumns}>
         <section className={style.records}>
           <h4>Recordes:</h4>

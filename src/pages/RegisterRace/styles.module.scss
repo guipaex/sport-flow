@@ -1,9 +1,15 @@
 @import "../../utils/variables.scss";
 .container {
-  text-align: center;
   max-width: $desktop-max;
+  height: 100%;
+  min-height: 100vh;
   margin: auto;
-  color: #192126;
+  padding: 1rem;
+  padding-left: clamp(1rem, 5vw, 2.5rem);
+  padding-right: clamp(1rem, 5vw, 2.5rem);
+  margin-top: $HeaderHeight;
+  color: $DarkGreen;
+  text-align: center;
 }
 h1 {
   font-weight: 900;

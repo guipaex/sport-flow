@@ -1,25 +1,26 @@
-@import "../../utils/variables.scss";
+@import "../../../utils/variables.scss";
 
 .form {
   margin: auto;
   flex-wrap: wrap;
-  padding: 2rem;
-  min-width: $desktop-max;
-  border-radius: 1rem;
+  padding: 2rem 1rem;
+  width: fit-content;
+  border-radius: 2rem;
   background-color: $White_2;
   justify-content: center;
   filter: drop-shadow(0 0.25rem 0.5rem rgba(0, 0, 0, 0.1));
 }
 .fieldset {
   border: none;
-  padding: 1rem;
-  margin: auto;
+  padding: 0 1rem;
   margin: 1rem auto;
+  background-color: rgba($DarkGreen, 0.2);
+  border-radius: 1rem;
 }
 
 .inputGroup {
   margin: 2rem auto;
-  max-width: 640px;
+  min-width: 320px;
   position: relative;
 }
 
