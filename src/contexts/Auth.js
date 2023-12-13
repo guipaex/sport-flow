@@ -17,9 +17,11 @@ export const AuthContextProvider = ({children}) => {
 		signOut(auth)
 		console.log('Deslogado')
 	}
+	
 	useEffect (() => {
-		const handleUser = onAuthStateChanged(auth, async (currentUser) => {
+		const unsubscribe = onAuthStateChanged(auth, async (currentUser) => {
 			if(currentUser){
+				console.log("unsubscribe at Auth.js");
 				const userData = await getUserData(currentUser.uid)
 				setUser( await userData)
 				setUserURL(await userData.username)
@@ -28,9 +30,9 @@ export const AuthContextProvider = ({children}) => {
 			}
 		});
 		return () => {
-			handleUser()
-		}
-	})
+      unsubscribe();
+    };
+	},[])
 	return (
 		<AuthContext.Provider value = {{logIn, logOut, user, userURL}}>
 			{children}
